@@ -1,0 +1,17 @@
+.my-card{
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.prduct-name{
+    font-weight: bold;
+    color: var(--gray-color);
+}
+.pirce{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--gray-color);
+}
+
+.my-card:hover{
+     transform: translateY(-10px);
+}

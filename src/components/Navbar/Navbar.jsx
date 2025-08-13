@@ -1,17 +1,21 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/Frontend_Assets/logo.png";
+import person from "../../assets/Frontend_Assets/user-avatar.png"
 import { BsCart2 } from "react-icons/bs";
-import { IoPersonOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+
 import "./Navbar.css";
 
 
 function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
        <div className="d-flex align-items-center">
          <img src={logo} alt="logo" />
-        <h2>SHOPPER</h2>
+        <h3 className="ms-1">SHOPPER</h3>
        </div>
         <div className="d-flex">
           <NavLink to="/"
@@ -40,8 +44,8 @@ function Navbar() {
         </div>
 
         <div className="d-flex">
-            <span className="me-3"><IoPersonOutline className="fs-3" /></span>
-            <span> <BsCart2 className="fs-3" /></span>
+          <img src={person} alt="person" className="img-fluid me-3 login" onClick={()=>navigate("/login")}/>
+            <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
             <span className="counter">0</span>
 
         </div>

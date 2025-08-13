@@ -4,6 +4,12 @@
   border-bottom: 2px solid var(--red-color);
 }
 
+.login, .cart{
+  cursor: pointer;
+}
+
+
+
 .counter{
   width: 20px;
   height: 20px;

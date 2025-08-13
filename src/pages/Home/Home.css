@@ -1,0 +1,9 @@
+.underline{
+    width: 200px;
+    border: none;
+    height: 4px;
+    margin: 10px auto;
+    background-color: var(--black-color);
+    opacity: 1;
+    border-radius: 2px;
+}
