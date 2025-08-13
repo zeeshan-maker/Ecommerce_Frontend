@@ -9,30 +9,41 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
-        <img src={logo} alt="logo" />
+       <div className="d-flex align-items-center">
+         <img src={logo} alt="logo" />
+        <h2>SHOPPER</h2>
+       </div>
         <div className="d-flex">
           <NavLink to="/"
             className={({ isActive }) => `nav-link mx-3 ${isActive ? "active" : ""}`}
           >
-            Home
+            Shop
           </NavLink>
 
-          <NavLink to="/collection"
+          <NavLink to="/men"
            className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}`}
           >
-            Collection
+            Men
           </NavLink>
 
-          <NavLink to="/contact"
+          <NavLink to="/women"
            className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}` }
           >
-            Contact
+            Women
+          </NavLink>
+
+           <NavLink to="/kids"
+           className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}` }
+          >
+            Kids
           </NavLink>
         </div>
 
-        <div>
+        <div className="d-flex">
             <span className="me-3"><IoPersonOutline className="fs-3" /></span>
-            <span ><BsCart2 className="fs-3" /></span>
+            <span> <BsCart2 className="fs-3" /></span>
+            <span className="counter">0</span>
+
         </div>
       </div>
     </nav>
