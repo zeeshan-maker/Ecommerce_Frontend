@@ -3,19 +3,18 @@ import Hero from "../../components/Hero/Hero";
 import Card from "../../components/Card/Card";
 import all_product from "../../assets/Frontend_Assets/all_product";
 function Home() {
+  const womens_product = all_product.filter((product)=> product.category === "women")
   return (
     <>
       <Hero />
-
-      <div className="container py-3">
+      <div className="container py-lg-4 py-md-3 py-2">
         <div className="row">
           <h1 className="text-center">POPULAR IN WOMEN</h1>
           <hr className="underline" />
         </div>
         <div className="row">
           {
-          all_product.map((product) => (
-            product.category === "women" ? (
+          womens_product.slice(0, 4).map((product) => (
               <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
               <Card 
               product_id={product.id} 
@@ -24,7 +23,7 @@ function Home() {
               price={product.new_price}
               />
             </div>
-            ): ""
+           
           )
         )
           }
