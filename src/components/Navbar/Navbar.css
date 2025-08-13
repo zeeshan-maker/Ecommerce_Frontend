@@ -1,0 +1,5 @@
+.active {
+  font-weight: bold;
+  color: var(--purple-color) !important;
+  border-bottom: 2px solid var(--purple-color);
+}

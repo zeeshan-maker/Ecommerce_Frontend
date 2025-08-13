@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+:root{
+  --purple-color: #8b008b;
+  --white-color: #fff;
+  --black-color: #000;
+  --pink-color: #FFC0CB;
+  --light-pink-color:#FFF8E7;
+}
+
+
+.main-button {
+  background-color: transparent;
+  color: var(--black-color);
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--black-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.main-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+
+.main-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
