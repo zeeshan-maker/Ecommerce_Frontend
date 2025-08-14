@@ -1,0 +1,8 @@
+.offers-container{
+    background-color: var(--light-pink-color);
+}
+
+.exclusive-heading{
+    font-size: 58px;
+    font-weight: 700;
+}

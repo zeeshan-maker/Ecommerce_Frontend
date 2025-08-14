@@ -24,7 +24,7 @@ function Hero() {
            </div>
 
            <div className="col-lg-6 d-flex align-items-center justify-content-center ">
-                <img src={hero_image} className="img-fluid" alt="" />
+                <img src={hero_image} className="img-fluid h-75" alt="" />
            </div>
         </div>
     </div>
