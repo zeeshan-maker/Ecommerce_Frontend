@@ -7,7 +7,7 @@ function Hero() {
     <div className="container-fluid bg-color">
         <div className="container">
         <div className="row">
-           <div className="col-lg-6 d-flex align-items-center justify-content-center">
+           <div className="col-lg-6 d-flex align-items-center justify-content-center order-2 order-sm-1">
              <div>
               <p className="new-arrivles">NEW ARRIVLES ONLY</p>
               <h1 className="hero-new-collection">
@@ -23,10 +23,11 @@ function Hero() {
              </div>
            </div>
 
-           <div className="col-lg-6 d-flex align-items-center justify-content-center ">
-                <img src={hero_image} className="img-fluid h-75" alt="" />
+           <div className="col-lg-6 d-flex align-items-center justify-content-center order-1 order-sm-2 ">
+                <img src={hero_image} className="img-fluid h-lg-75 h-md-75" alt="" />
            </div>
         </div>
+
     </div>
     </div>
   )

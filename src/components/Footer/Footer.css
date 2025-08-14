@@ -25,3 +25,13 @@
     font-weight: bold;
 }
 
+
+@media (max-width: 576px){
+    .footer-top-content h1, h6,p{
+        display: none;
+    }
+    .footer-top-content{
+        top:30%;
+        left: 30px;
+    }
+}

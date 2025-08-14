@@ -6,3 +6,11 @@
     font-size: 58px;
     font-weight: 700;
 }
+
+@media (max-width: 576px){
+    .exclusive-heading{
+    padding-top: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+}

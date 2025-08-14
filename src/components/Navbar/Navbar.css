@@ -21,3 +21,57 @@
   bottom:10px;
   right: 5px;
 }
+
+.menu{
+  display: none;
+}
+
+
+@media (max-width: 576px) {
+  .shopper{
+    display: none;
+  }
+  .menu{
+    display: block;
+  }
+
+  .menu img{
+    margin-right: 10px;
+  }
+  
+  .nav-item-container{
+    background-color:var(--light-pink-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    width: 70%;
+    height: 400px;
+    margin:0 auto;
+    flex-direction: column;
+    position: absolute;
+    right: 50px;
+    top: 80px;
+    z-index: 888;
+
+     /* Animation settings */
+    transform-origin: top right; 
+    transform: scale(0); 
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* When menu is shown */
+.nav-item-container.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+  .nav-link{
+    margin-top: 20px;
+    text-align: center;
+  }
+  .active {
+  font-weight: bold;
+  border-bottom: none;
+  color:var(--secondary-color) !important;
+}
+}
