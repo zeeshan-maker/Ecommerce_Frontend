@@ -13,6 +13,7 @@ code {
 }
 
 
+
 :root{
   --purple-color: #8b008b;
   --white-color: #fff;
@@ -41,4 +42,21 @@ code {
 .main-button:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+
+
+.main-button-outline{
+   background-color: transparent;
+  color: var(--white-color);
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--white-color);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+
+.main-button-outline:hover {
+  background-color: var(--white-color);
+  color: var(--black-color);
 }

@@ -11,7 +11,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-expand-lg shadow-sm position-fixed w-100 navbar-container ">
+    <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
        <div className="d-flex align-items-center">
          <img src={logo} alt="logo" />
