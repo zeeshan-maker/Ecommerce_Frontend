@@ -1,0 +1,27 @@
+.login-card{
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px;
+    position: relative;
+    overflow: hidden;
+}
+.login-heading{
+    font-weight: 800;
+     background: linear-gradient(90deg, #FF730A, #FFA008); /* blue shades */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+}
+
+.btn-login{
+    background-color: #FF730A;
+    color: var(--white-color);
+}
+
+.btn-login:hover{
+    background-color: green;
+    color: var(--white-color);
+}
+
+
+
