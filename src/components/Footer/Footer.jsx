@@ -5,9 +5,9 @@ function Footer() {
     <>
     <div className="footer-top">
        <div className="footer-top-content">
-         <h6>NEED HELP ?</h6>
-        <h1>We are here to help</h1>
-        <p>Our team are here to make your shopping stress free.</p>
+         <h6 className="footer-top-heading">NEED HELP ?</h6>
+        <h1 className="footer-top-second-heading">We are here to help</h1>
+        <p className="footer-top-para">Our team are here to make your shopping stress free.</p>
         <button className="main-button-outline">Contact Us</button>
        </div>
         <img src={footer_image} alt="" className="img-fluid"/>

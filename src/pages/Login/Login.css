@@ -7,14 +7,14 @@
 }
 .login-heading{
     font-weight: 800;
-     background: linear-gradient(90deg, #FF730A, #FFA008); /* blue shades */
+     background: linear-gradient(90deg, var(--orange-color), #FFA008); /* blue shades */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
 }
 
 .btn-login{
-    background-color: #FF730A;
+    background-color: var(--orange-color);
     color: var(--white-color);
 }
 

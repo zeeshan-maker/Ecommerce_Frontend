@@ -27,7 +27,7 @@
 
 
 @media (max-width: 576px){
-    .footer-top-content h1, h6,p{
+    .footer-top-heading, .footer-top-second-heading,.footer-top-para{
         display: none;
     }
     .footer-top-content{
