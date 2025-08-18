@@ -5,32 +5,38 @@ import { useState } from "react";
 
 function ProductDetaisPage() {
   const { product_id } = useParams();
-   const [selectedSize, setSelectedSize] = useState(null);
-  const sizes = ["S", "M", "L", "XL", "XXL"];
+   const [selectedSize, setSelectedSize] = useState("S");
+   const sizes = ["S", "M", "L", "XL", "XXL"];
   const product = products.find((p) => p.id === parseInt(product_id));
+  const images =[product.image, product.image, product.image, product.image]
+   const [mainImage, setMainImage] = useState(images[0]);
  
 
   return (
     <div className="container py-4">
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-6 ">
           <div className="row">
             <div className="col-lg-2 order-2 order-sm-1  image-column">
-              <img src={product.image} alt={product.name} className="img-fluid " />
-              <img src={product.image} alt={product.name} className="img-fluid " />
-              <img src={product.image} alt={product.name} className="img-fluid " />
-              <img src={product.image} alt={product.name} className="img-fluid" />
+              {images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={product.name}
+                  onClick={() => setMainImage(img)}
+                />
+              ))}
             </div>
             <div className="col-lg-10 order-1 order-sm-2">
-              <img src={product.image} alt={product.name} className="img-fluid main-image" />
+              <img src={mainImage} alt={product.name} className="img-fluid main-image" />
             </div>
           </div>
         </div>
         <div className="col-lg-6">
-          <h4 className="mb-3 mt-3">{product.name}</h4>
-          <h6 className="mb-3">Price: ${product.new_price}</h6>
-          <h6 className="text-secondary">Description</h6>
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+          <h4 className="mb-3 mt-3 fw-bold text-secondary">{product.name}</h4>
+          <h6 className="mb-3 fs-2 text-secondary">${product.new_price}</h6>
+          <h6 className="text-danger fw-bold">Description</h6>
+          <p className="text-secondary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
           <h6 className="mb-lg-4">Select Size</h6>
          <div className="mb-lg-4 mb-3 size-options">
       {sizes.map((size) => (
