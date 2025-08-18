@@ -1,5 +1,4 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Home from "../pages/Home/Home";
 import ProductDetails from "../pages/ProductDetailsPage/ProductDetaisPage"
 import Men from "../pages/Men/Men";
@@ -8,8 +7,10 @@ import Kids from "../pages/Kids/Kids";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Cart from "../pages/Cart/Cart";
+
+
 const AppRoutes = () => {
-  return (
+   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/men" element={<Men />} />

@@ -1,0 +1,61 @@
+.image-column {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  cursor: pointer;
+}
+
+.image-column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.size-option {
+  border: 1px solid var(--light-gray-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.size-option:hover {
+  border-color: var(--orange-color); /* beetroot purple */
+  color: var(--orange-color);
+}
+
+.size-option.active {
+    border-color: var(--orange-color);
+}
+
+.add-to-card-button{
+  background-color: var(--red-color);
+  border: none;
+  padding: 10px 20px;
+  color: var(--white-color);
+}
+
+
+@media (max-width: 576px){
+  .image-column {
+    height: 100px;
+    margin-top: 5px;
+    gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.main-image{
+  width: 100%;
+}
+
+
+}
+
+

@@ -16,14 +16,14 @@ function Footer() {
     <div className="container-fluid py-lg-4 py-3 footer">
       <div className="container">
         <div className="row">
-          <div className="col-lg-2 col-md-4 col-sm-6">
+          <div className="col-lg-2 col-md-4 col-4">
             <h6>Contact</h6>
             <ul className="list-unstyled ">
               <li>9876753211</li>
               <li>zeeshan@gmail.com</li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-4 col-sm-6">
+          <div className="col-lg-2 col-md-4 col-4">
             <h6>Shop</h6>
             <ul className="list-unstyled ">
               <li>Tops</li>
@@ -34,7 +34,7 @@ function Footer() {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-4 col-sm-6">
+          <div className="col-lg-3 col-md-4 col-4">
             <h6>Company</h6>
             <ul className="list-unstyled ">
               <li>Cookies</li>
@@ -44,7 +44,7 @@ function Footer() {
               <li>Security</li>
             </ul>
           </div>
-          <div className="col-lg-5 col-md-4 col-sm-6">
+          <div className="col-lg-5 col-md-4 col-12">
             <h6>Newsletter</h6>
             <div class="input-group">
               <input
