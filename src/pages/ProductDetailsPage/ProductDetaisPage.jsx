@@ -3,6 +3,8 @@ import products from "../../assets/Frontend_Assets/all_product";
 import "./ProductDetailsPage.css";
 import { useState } from "react";
 import { useDispatcher } from "../../redux/useDispatcher"
+import { toast } from 'react-toastify';
+
 
 function ProductDetaisPage() {
    const { addItem } = useDispatcher();
@@ -51,7 +53,12 @@ function ProductDetaisPage() {
         </div>
       ))}
          </div>
-         <button className="add-to-card-button" onClick={()=>addItem(product)}>Add To Cart</button>
+         <button 
+         className="add-to-card-button" 
+         onClick={()=>{
+          addItem(product)
+          toast.success("Product Added!")
+         }}>Add To Cart</button>
         </div>
       </div>
     </div>

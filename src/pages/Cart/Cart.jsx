@@ -1,5 +1,6 @@
 import { useCartSelector } from "../../redux/useSelectors";
 import { useDispatcher } from "../../redux/useDispatcher";
+import { toast } from "react-toastify";
 function Cart() {
   const { cart } = useCartSelector();
   const { removeItem } = useDispatcher()
@@ -37,7 +38,12 @@ function Cart() {
             <td>{product.quantity}</td>
             <td>${product.new_price * product.quantity}</td>
             <td>
-              <button className="btn btn-sm btn-danger" onClick={()=>removeItem(product.id)}>X</button>
+              <button 
+              className="btn btn-sm btn-danger" 
+              onClick={()=>{
+                removeItem(product.id)
+                toast.success("Product Remove successfully.")
+              }}>X</button>
             </td>
           </tr>
             ))
