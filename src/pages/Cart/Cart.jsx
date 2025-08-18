@@ -1,11 +1,52 @@
-import React from 'react'
-
+import { useCartSelector } from "../../redux/useSelectors";
+import { useDispatcher } from "../../redux/useDispatcher";
 function Cart() {
+  const { cart } = useCartSelector();
+  const { removeItem } = useDispatcher()
+ 
+
   return (
-    <div>
-      Cart Page
+    <div className="container py-lg-4 py-2">
+     {
+      cart.length === 0 ? (
+         <div className="text-center">
+          <h4>Your cart is empty 🛒</h4>
+          <p>Start adding some products to your cart!</p>
+        </div>
+      ):
+       <table className="table align-middle text-center">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            cart.map((product)=>(
+              <tr key={product.id}>
+            <td>
+              <img src={product.image} alt={product.name} className="w-25" />
+            </td>
+            <td>{product.name}</td>
+            <td>${product.new_price}</td>
+            <td>{product.quantity}</td>
+            <td>${product.new_price * product.quantity}</td>
+            <td>
+              <button className="btn btn-sm btn-danger" onClick={()=>removeItem(product.id)}>X</button>
+            </td>
+          </tr>
+            ))
+          }
+        </tbody>
+      </table>
+     }
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

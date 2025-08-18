@@ -7,12 +7,14 @@ import menu from "../../assets/Frontend_Assets/menu.png"
 import close from "../../assets/Frontend_Assets/close-window.png"
 import "./Navbar.css";
 import { useState } from "react";
+import { useCartSelector } from "../../redux/useSelectors";
+
 
 
 function Navbar() {
+  const { cart } = useCartSelector();
   const navigate = useNavigate();
   const [show, setShow] = useState(false)
-
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
@@ -54,7 +56,7 @@ function Navbar() {
         <div className="d-flex">
           <img src={person} alt="person" className="img-fluid me-3 login" onClick={()=>navigate("/login")}/>
             <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
-            <span className="counter">0</span>
+            <span className="counter">{cart.length}</span>
 
            <div className="menu">
             {

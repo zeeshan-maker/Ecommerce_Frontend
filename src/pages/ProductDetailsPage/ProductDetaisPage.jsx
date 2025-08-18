@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import products from "../../assets/Frontend_Assets/all_product";
 import "./ProductDetailsPage.css";
 import { useState } from "react";
+import { useDispatcher } from "../../redux/useDispatcher"
 
 function ProductDetaisPage() {
+   const { addItem } = useDispatcher();
   const { product_id } = useParams();
    const [selectedSize, setSelectedSize] = useState("S");
    const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -49,7 +51,7 @@ function ProductDetaisPage() {
         </div>
       ))}
          </div>
-         <button className="add-to-card-button">Add To Cart</button>
+         <button className="add-to-card-button" onClick={()=>addItem(product)}>Add To Cart</button>
         </div>
       </div>
     </div>
