@@ -11,7 +11,7 @@ function NewCollections() {
         <div className="row">
             {
                 new_collections.map((product)=>(
-                    <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-lg-4 mb-md-3 mb-sm-2">
+                    <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-lg-4 mb-md-3 mb-2 ">
                         <Card
                         product_id={product.id}
                         name={product.name}
