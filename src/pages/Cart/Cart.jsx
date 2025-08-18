@@ -18,7 +18,7 @@ function Cart() {
         <thead>
           <tr>
             <th>Product</th>
-            <th>Title</th>
+            <th className="d-none d-md-table-cell">Title</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
@@ -30,9 +30,9 @@ function Cart() {
             cart.map((product)=>(
               <tr key={product.id}>
             <td>
-              <img src={product.image} alt={product.name} className="w-25" />
+              <img src={product.image} alt={product.name} className="w-lg-25 w-75" />
             </td>
-            <td>{product.name}</td>
+            <td className="d-none d-md-table-cell">{product.name}</td>
             <td>${product.new_price}</td>
             <td>{product.quantity}</td>
             <td>${product.new_price * product.quantity}</td>
