@@ -1,6 +1,7 @@
 import { useCartSelector } from "../../redux/useSelectors";
 import { useDispatcher } from "../../redux/useDispatcher";
 import { toast } from "react-toastify";
+import "./Cart.css"
 function Cart() {
   const { cart } = useCartSelector();
   const { removeItem } = useDispatcher()
@@ -31,7 +32,7 @@ function Cart() {
             cart.map((product)=>(
               <tr key={product.id}>
             <td>
-              <img src={product.image} alt={product.name} className="w-lg-25 w-75" />
+              <img src={product.image[0]} alt={product.name} className="cart-product-image" />
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
             <td>${product.new_price}</td>

@@ -8,7 +8,7 @@ function Card({product_id,image,name,price}) {
   return (
     <div className='card my-card overflow-hidden'>
         <Link to={`/product/${product_id}`}>
-        <img src={image} alt="name" className="img-fluid" />
+        <img src={image} alt="name" className="img-fluid  first-image" />
         </Link>
         <div className="p-2">
             <img src={star} alt="" />
