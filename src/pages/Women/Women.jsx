@@ -16,7 +16,7 @@ function Women() {
                 product_id={product.id}
                 name={product.name}
                 price={product.new_price}
-                image={product.image}
+                image={product.image[0]}
                 />
               </div>
             ))

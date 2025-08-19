@@ -15,7 +15,7 @@ function Popular() {
               <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
               <Card 
               product_id={product.id} 
-              image={product.image}
+              image={product.image[0]}
               name={product.name}
               price={product.new_price}
               />

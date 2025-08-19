@@ -12,8 +12,7 @@ function ProductDetaisPage() {
    const [selectedSize, setSelectedSize] = useState("S");
    const sizes = ["S", "M", "L", "XL", "XXL"];
   const product = products.find((p) => p.id === parseInt(product_id));
-  const images =[product.image, product.image, product.image, product.image]
-   const [mainImage, setMainImage] = useState(images[0]);
+   const [mainImage, setMainImage] = useState(product.image[0]);
  
 
   return (
@@ -22,7 +21,7 @@ function ProductDetaisPage() {
         <div className="col-lg-6 ">
           <div className="row">
             <div className="col-lg-2 order-2 order-sm-1  image-column">
-              {images.map((img, index) => (
+              {product.image.map((img, index) => (
                 <img
                   key={index}
                   src={img}
