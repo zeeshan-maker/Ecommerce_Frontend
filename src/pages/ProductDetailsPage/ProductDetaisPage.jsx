@@ -10,7 +10,6 @@ function ProductDetaisPage() {
    const { addItem } = useDispatcher();
   const { product_id } = useParams();
    const [selectedSize, setSelectedSize] = useState("S");
-   const sizes = ["S", "M", "L", "XL", "XXL"];
   const product = products.find((p) => p.id === parseInt(product_id));
    const [mainImage, setMainImage] = useState(product.image[0]);
  
@@ -42,7 +41,7 @@ function ProductDetaisPage() {
           <p className="text-secondary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
           <h6 className="mb-lg-4">Select Size</h6>
          <div className="mb-lg-4 mb-3 size-options">
-      {sizes.map((size) => (
+      {product.sizes.map((size) => (
         <div
           key={size}
           className={`size-option ${selectedSize === size ? "active" : ""}`}
@@ -55,7 +54,7 @@ function ProductDetaisPage() {
          <button 
          className="add-to-card-button" 
          onClick={()=>{
-          addItem(product)
+          addItem({product_id:product.id,image:product.image,name:product.name,price:product.new_price,size:selectedSize})
           toast.success("Product Added!")
          }}>Add To Cart</button>
         </div>

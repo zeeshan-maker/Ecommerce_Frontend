@@ -60,6 +60,7 @@ let all_product = [
     image: [p1_img1,p1_img2,p1_img3,p1_img4],
     new_price: 50.0,
     old_price: 80.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 2,
@@ -68,6 +69,7 @@ let all_product = [
     image: [p2_img,p2_img2,p2_img3,p2_img4],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 3,
@@ -76,6 +78,7 @@ let all_product = [
     image: [p3_img1,p3_img2,p3_img3,p3_img4],
     new_price: 60.0,
     old_price: 100.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 4,
@@ -84,6 +87,7 @@ let all_product = [
     image: [p4_img,p4_img,p4_img,p4_img],
     new_price: 100.0,
     old_price: 150.0,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 5,
@@ -100,6 +104,7 @@ let all_product = [
     image: [p6_img,p6_img,p6_img,p6_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 7,
@@ -108,6 +113,7 @@ let all_product = [
     image: [p7_img,p7_img,p7_img,p7_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 8,
@@ -116,6 +122,7 @@ let all_product = [
     image: [p8_img,p8_img,p8_img,p8_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 9,
@@ -124,6 +131,7 @@ let all_product = [
     image: [p9_img,p9_img,p9_img,p9_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 10,
@@ -132,6 +140,7 @@ let all_product = [
     image: [p10_img,p10_img,p10_img,p10_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 11,
@@ -140,6 +149,7 @@ let all_product = [
     image:[ p11_img, p11_img, p11_img, p11_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 12,
@@ -148,6 +158,7 @@ let all_product = [
     image: [p12_img,p12_img,p12_img,p12_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 13,
@@ -156,6 +167,7 @@ let all_product = [
     image: [p13_img,p13_img,p13_img,p13_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 14,
@@ -164,6 +176,7 @@ let all_product = [
     image: [p14_img,p14_img,p14_img,p14_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 15,
@@ -172,6 +185,7 @@ let all_product = [
     image: [p15_img,p15_img,p15_img,p15_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 16,
@@ -180,6 +194,7 @@ let all_product = [
     image: [p16_img,p16_img,p16_img,p16_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 17,
@@ -188,6 +203,7 @@ let all_product = [
     image: [p17_img,p17_img,p17_img,p17_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 18,
@@ -196,6 +212,7 @@ let all_product = [
     image: [p18_img,p18_img,p18_img,p18_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 19,
@@ -204,6 +221,7 @@ let all_product = [
     image: [p19_img,p19_img,p19_img,p19_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 20,
@@ -212,6 +230,7 @@ let all_product = [
     image: [p20_img,p20_img,p20_img,p20_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 21,
@@ -220,6 +239,7 @@ let all_product = [
     image: [p21_img,p21_img,p21_img,p21_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 22,
@@ -228,6 +248,7 @@ let all_product = [
     image: [p22_img,p22_img,p22_img,p22_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 23,
@@ -236,6 +257,7 @@ let all_product = [
     image: [p23_img,p23_img,p23_img,p23_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 24,
@@ -244,6 +266,7 @@ let all_product = [
     image: [p24_img,p24_img,p24_img,p24_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 25,
@@ -252,6 +275,7 @@ let all_product = [
     image: [p25_img,p25_img,p25_img,p25_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 26,
@@ -260,6 +284,7 @@ let all_product = [
     image: [p26_img,p26_img,p26_img,p26_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 27,
@@ -268,6 +293,7 @@ let all_product = [
     image: [p27_img,p27_img,p27_img,p27_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 28,
@@ -276,6 +302,7 @@ let all_product = [
     image: [p28_img,p28_img,p28_img,p28_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 29,
@@ -284,6 +311,7 @@ let all_product = [
     image: [p29_img,p29_img,p29_img,p29_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 30,
@@ -292,6 +320,7 @@ let all_product = [
     image: [p30_img,p30_img,p30_img,p30_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 31,
@@ -300,6 +329,7 @@ let all_product = [
     image: [p31_img,p31_img,p31_img,p31_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 32,
@@ -308,6 +338,8 @@ let all_product = [
     image: [p32_img,p32_img,p32_img,p32_img],
     new_price: 85.0,
     old_price: 120.5,
+
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 33,
@@ -316,6 +348,7 @@ let all_product = [
     image: [p33_img,p33_img,p33_img,p33_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 34,
@@ -324,6 +357,7 @@ let all_product = [
     image: [p34_img,p34_img,p34_img,p34_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 35,
@@ -332,6 +366,7 @@ let all_product = [
     image: [p35_img,p35_img,p35_img,p35_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 36,
@@ -340,6 +375,7 @@ let all_product = [
     image: [p36_img,p36_img,p36_img,p36_img],
     new_price: 85.0,
     old_price: 120.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: 37,
@@ -348,6 +384,7 @@ let all_product = [
     image: [p37_img1,p37_img2,p37_img3,p37_img4],
     new_price: 786.0,
     old_price: 1452.5,
+    sizes : ["S", "M", "L", "XL", "XXL"]
   },
 ];
 

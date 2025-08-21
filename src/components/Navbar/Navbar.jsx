@@ -18,8 +18,8 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
-       <div className="d-flex align-items-center logo">
-         <img src={logo} alt="logo" onClick={()=>navigate("/")} />
+       <div className="d-flex align-items-center logo" onClick={()=>navigate("/")}>
+         <img src={logo} alt="logo" />
         <h3 className="ms-1 shopper">SHOPPER</h3>
        </div>
         <div className={`d-flex nav-item-container ${show ? "show" : ""}`}>

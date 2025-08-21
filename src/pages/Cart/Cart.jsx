@@ -23,30 +23,32 @@ function Cart() {
             <th className="d-none d-md-table-cell">Title</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Size</th>
             <th>Total</th>
             <th>Remove</th>
           </tr>
         </thead>
         <tbody>
           {
-            cart.map((product)=>(
-              <tr key={product.id}>
+            cart.map((product,index)=>(
+              <tr key={index}>
             <td>
               <img src={product.image[0]} alt={product.name} className="cart-product-image" />
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
-            <td>${product.new_price}</td>
+            <td>${product.price}</td>
             <td>{product.quantity}</td>
-            <td>${product.new_price * product.quantity}</td>
+            <td>{product.size}</td>
+            <td>${product.price * product.quantity}</td>
             <td>
               <button 
               className="btn btn-sm btn-danger" 
               onClick={()=>{
-                removeItem(product.id)
+                removeItem({product_id:product.product_id,size:product.size})
                 toast.success("Product Remove successfully.")
               }}>X</button>
             </td>
-          </tr>
+              </tr>
             ))
           }
         </tbody>
