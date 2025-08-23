@@ -2,3 +2,11 @@
     width: 50px;
     height: auto;
 }
+
+.checkout-button{
+    background-color: var(--red-color);
+  color: var(--white-color);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  transition: all 0.3s ease;
+}

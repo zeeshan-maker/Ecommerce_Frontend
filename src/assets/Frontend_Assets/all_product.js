@@ -3,10 +3,10 @@ import p1_img2 from "./product1_img_2.avif";
 import p1_img3 from "./product1_img_3.avif";
 import p1_img4 from "./product1_img_4.avif";
 
-import p2_img from "./product_2.png";
-import p2_img2 from "./p1_product_i1.png"
-import p2_img3 from "./p1_product_i2.png"
-import p2_img4 from "./p1_product_i3.png"
+import p2_img from "./product2_image.PNG";
+import p2_img2 from "./product2_image1.PNG"
+import p2_img3 from "./product2_image2.PNG"
+import p2_img4 from "./product2_image3.PNG"
 
 import p3_img1 from "./product3_img1.avif";
 import p3_img2 from "./product3_img2.avif";
@@ -14,6 +14,8 @@ import p3_img3 from "./product3_img3.avif";
 import p3_img4 from "./product3_img4.avif";
 
 import p4_img from "./product_4.png";
+
+
 import p5_img from "./product_5.png";
 import p6_img from "./product_6.png";
 import p7_img from "./product_7.png";
