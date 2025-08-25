@@ -1,11 +1,16 @@
 import user from "../../assets/Frontend_Assets/person.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { registerUser } from "../../services/authService";
+import { toast } from "react-toastify";
+
 
 function Registration() {
+  const navigate= useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone:"",
     password: "",
   });
 
@@ -18,12 +23,25 @@ function Registration() {
   };
 
    // 🔹 Handle form submit
-  const handleForm = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
+  const handleForm = async (e) => {
+    try {
+      e.preventDefault();
+      const res = await registerUser(formData)
+      toast.success(res.message)
+      setFormData({
+        name: "",
+      email: "",
+      phone:"",
+      password: "",
+      })
+      navigate("/login")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
 
 
   };
+
   return (
     <div className="container">
         <div className="row py-4 d-flex justify-content-center">
@@ -48,6 +66,14 @@ function Registration() {
                 onChange={handleChange}
                 class="form-control mb-3"
                 placeholder="Enter your email"
+              />
+              <input
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                class="form-control mb-3"
+                placeholder="Enter your phone number"
               />
               <input
                 type="password"

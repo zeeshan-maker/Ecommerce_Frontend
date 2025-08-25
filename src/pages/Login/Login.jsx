@@ -1,10 +1,11 @@
 import "./Login.css";
 import user from "../../assets/Frontend_Assets/person.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-
+import { loginUser } from "../../services/authService"
+import { toast } from "react-toastify";
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData]= useState({
     email:"",
     password:""
@@ -18,9 +19,15 @@ function Login() {
     })
   };
 
-  const handleForm = (e)=>{
+  const handleForm = async (e) =>{
     e.preventDefault()
-    console.log("Form Submitted:", formData);
+    try {
+      const res = await loginUser(formData)
+      toast.success(res.message);
+      navigate("/")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
   }
   return (
         <div className="container">
