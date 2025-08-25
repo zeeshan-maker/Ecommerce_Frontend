@@ -4,8 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginUser } from "../../services/authService"
 import { toast } from "react-toastify";
+import { useDispatcher } from "../../redux/useDispatcher";
+
+
+
 function Login() {
   const navigate = useNavigate();
+  const { login } = useDispatcher();
   const [formData, setFormData]= useState({
     email:"",
     password:""
@@ -23,6 +28,9 @@ function Login() {
     e.preventDefault()
     try {
       const res = await loginUser(formData)
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("user", JSON.stringify(res.user));
+      login(res.token, res.user)
       toast.success(res.message);
       navigate("/")
     } catch (error) {
