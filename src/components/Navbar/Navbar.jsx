@@ -7,12 +7,13 @@ import menu from "../../assets/Frontend_Assets/menu.png"
 import close from "../../assets/Frontend_Assets/close-window.png"
 import "./Navbar.css";
 import { useState } from "react";
-import { useCartSelector } from "../../redux/useSelectors";
-
-
+import { useCartSelector , useAuthSelector } from "../../redux/useSelectors";
+import { useDispatcher } from "../../redux/useDispatcher";
 
 function Navbar() {
-  const { cart } = useCartSelector();
+    const { cart } = useCartSelector();
+    const { token } = useAuthSelector();
+    const { logout } = useDispatcher();
   const navigate = useNavigate();
   const [show, setShow] = useState(false)
   return (
@@ -54,7 +55,10 @@ function Navbar() {
         </div>
 
         <div className="d-flex">
-          <img src={person} alt="person" className="img-fluid me-3 login" onClick={()=>navigate("/login")}/>
+          
+         {
+          token? <button className="logout-button" onClick={()=>logout()}>Logout</button>: <img src={person} alt="person" className="img-fluid me-3 login" onClick={()=>navigate("/login")}/>
+         }
             <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
             <span className="counter">{cart.length}</span>
 

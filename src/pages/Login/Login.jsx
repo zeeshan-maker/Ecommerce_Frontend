@@ -28,9 +28,7 @@ function Login() {
     e.preventDefault()
     try {
       const res = await loginUser(formData)
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", JSON.stringify(res.user));
-      login(res.token, res.user)
+      login({"token":res.token, "user":res.user})
       toast.success(res.message);
       navigate("/")
     } catch (error) {
