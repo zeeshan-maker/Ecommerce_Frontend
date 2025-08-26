@@ -4,7 +4,7 @@ import star_dull from "../../assets/Frontend_Assets/star_dull_icon.png"
 import { Link } from "react-router-dom"
 
 
-function Card({product_id,image,name,price}) {
+function Card({product_id,image,name,price,old_price}) {
   return (
     <div className='card my-card overflow-hidden'>
         <Link to={`/product/${product_id}`}>
@@ -17,7 +17,11 @@ function Card({product_id,image,name,price}) {
             <img src={star_dull} alt="" />
             <img src={star_dull} alt="" />
            <p className="mb-0 prduct-name">{name}</p>
-           <p className="pirce">${price}</p>
+           <p>
+            <span className="price">${price}</span>
+            <span className="old-price">${old_price}</span>
+
+           </p>
         </div>
     </div>
   )

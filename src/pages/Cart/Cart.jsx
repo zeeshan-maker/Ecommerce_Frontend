@@ -39,7 +39,7 @@ function Cart() {
             cart.map((product,index)=>(
               <tr key={index}>
             <td>
-              <img src={product.image[0]} alt={product.name} className="cart-product-image" />
+              <img src={product.image} alt={product.name} className="cart-product-image" />
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
             <td>${product.price}</td>

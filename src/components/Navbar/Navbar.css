@@ -4,7 +4,7 @@
 .active {
   font-weight: bold;
   color: var(--red-color) !important;
-  border-bottom: 2px solid var(--red-color);
+  border-bottom: 2px solid var(--orange-color);
 }
 
 .login, .cart{
@@ -15,7 +15,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--red-color);
+  background-color: var(--orange-color);
   color: var(--white-color);
   display: flex;
   align-items: center;

@@ -10,10 +10,15 @@
     font-weight: bold;
     color: var(--gray-color);
 }
-.pirce{
+.price{
     font-size: 24px;
     font-weight: bold;
+    color: var(--orange-color);
+}
+.old-price{
+    text-decoration: line-through;
     color: var(--gray-color);
+    margin-left: 10px;
 }
 
 .my-card:hover{

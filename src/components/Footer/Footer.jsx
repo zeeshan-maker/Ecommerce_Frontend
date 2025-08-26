@@ -46,14 +46,14 @@ function Footer() {
           </div>
           <div className="col-lg-5 col-md-4 col-12">
             <h6>Newsletter</h6>
-            <div class="input-group">
+            <div className="input-group">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="name"
                 placeholder="Subscribe"
               />
-              <button class="btn btn-danger" type="button">
+              <button className="btn btn-danger" type="button">
                 Subscribe
               </button>
             </div>

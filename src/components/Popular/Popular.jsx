@@ -1,8 +1,22 @@
 import "./Popular.css"
 import Card from "../Card/Card";
-import all_product from "../../assets/Frontend_Assets/all_product";
+import { useEffect, useState } from "react";
+import { getAllProduct } from "../../services/productService";
+import { toast } from "react-toastify";
 function Popular() {
-    const womens_product = all_product.filter((product)=> product.category === "women")
+  const [products, setProducts] = useState([])
+    
+    useEffect(()=>{
+        const fetchAllProduct = async ()=>{
+          try {
+            const res= await getAllProduct();
+            setProducts(res.products)
+          } catch (error) {
+            toast.error(error.response.data.message)
+          }
+        }
+        fetchAllProduct()
+    },[])
   return (
    <div className="container py-lg-4 py-md-3 py-2">
         <div className="row">
@@ -11,13 +25,14 @@ function Popular() {
         </div>
         <div className="row">
           {
-          womens_product.slice(0, 4).map((product) => (
-              <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
+          products.map((product) => (
+              <div key={product.product_id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
               <Card 
-              product_id={product.id} 
-              image={product.image[0]}
+              product_id={product.product_id} 
+              image={product.images[0]}
               name={product.name}
-              price={product.new_price}
+              price={product.price}
+              old_price={product.old_price}
               />
             </div>
            
