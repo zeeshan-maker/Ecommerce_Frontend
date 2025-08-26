@@ -30,7 +30,7 @@
 }
 
 .logout-button{
-  background-color: var(--red-color);
+  background-color: var( --orange-color);
   color: var(--white-color);
   padding: 0.4rem 1rem;
   border: none;
@@ -38,6 +38,33 @@
   transition: all 0.3s ease;
   margin-right: 20px;
 }
+
+
+.dropdown-menu-custom {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--white-color);
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.dropdown-menu-custom .dropdown-item {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.dropdown-menu-custom .dropdown-item:hover {
+  background:var(--white-color);
+}
+
 
 @media (max-width: 576px) {
   .shopper{

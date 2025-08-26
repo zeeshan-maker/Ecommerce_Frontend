@@ -14,8 +14,19 @@ function Navbar() {
     const { cart } = useCartSelector();
     const { token } = useAuthSelector();
     const { logout } = useDispatcher();
-  const navigate = useNavigate();
-  const [show, setShow] = useState(false)
+    const navigate = useNavigate();
+    const [show, setShow] = useState(false)
+    const [dropdown, setDropdown] = useState(false);
+
+
+     const handleLogout = () => {
+      console.log("hii")
+    logout();
+    setDropdown(false);
+    navigate("/login");
+  };
+
+
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
@@ -57,7 +68,20 @@ function Navbar() {
         <div className="d-flex">
           
          {
-          token? <button className="logout-button" onClick={()=>logout()}>Logout</button>: <img src={person} alt="person" className="img-fluid me-3 login" onClick={()=>navigate("/login")}/>
+          token? 
+           <div className="position-relative"> 
+          <img src={person} alt="person" 
+          className="img-fluid me-3 login"
+            onClick={() => setDropdown((prev) => !prev)}
+          />
+           {
+           dropdown && (
+                <div className="dropdown-menu-custom shadow">
+                  <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                </div>
+              )}
+            </div>
+            :<button className="logout-button" onClick={()=>navigate("/login")}>Login</button>
          }
             <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
             <span className="counter">{cart.length}</span>
