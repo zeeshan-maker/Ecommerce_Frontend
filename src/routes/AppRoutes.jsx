@@ -21,8 +21,7 @@ const AppRoutes = () => {
       <Route path="/registration" element={<Registration />} />
 
       {/* User Routes */}
-      <Route path="/cart" element={<Cart/>} />
-
+      <Route path="/cart" element={<Cart />} />
        
     </Routes>
   );
