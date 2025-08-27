@@ -12,7 +12,6 @@ function ProductDetaisPage() {
    const [selectedSize, setSelectedSize] = useState("S");
    const [mainImage, setMainImage] = useState(null);
 
-   const sizes =["S","M","L","XL"]
   
    useEffect(()=>{
     const fetchSingleProduct = async ()=>{
@@ -58,7 +57,7 @@ function ProductDetaisPage() {
           <p className="text-secondary">{product.description}</p>
           <h6 className="mb-lg-4">Select Size</h6>
          <div className="mb-lg-4 mb-3 size-options">
-        {sizes.map((size) => (
+        {product?.sizes?.map((size) => (
           <div
             key={size}
             className={`size-option ${selectedSize === size ? "active" : ""}`}

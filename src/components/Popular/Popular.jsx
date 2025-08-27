@@ -5,7 +5,7 @@ import { getAllProduct } from "../../services/productService";
 import { toast } from "react-toastify";
 function Popular() {
   const [products, setProducts] = useState([])
-    
+
     useEffect(()=>{
         const fetchAllProduct = async ()=>{
           try {
@@ -26,6 +26,7 @@ function Popular() {
         <div className="row">
           {
           products.map((product) => (
+             product.Category.name === "Women" ?(
               <div key={product.product_id} className="col-lg-3 col-md-4 col-sm-6 mb-3">
               <Card 
               product_id={product.product_id} 
@@ -34,7 +35,8 @@ function Popular() {
               price={product.price}
               old_price={product.old_price}
               />
-            </div>
+              </div>
+             ):""
            
           )
         )

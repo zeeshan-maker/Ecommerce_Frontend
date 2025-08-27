@@ -20,7 +20,6 @@ function Navbar() {
 
 
      const handleLogout = () => {
-      console.log("hii")
     logout();
     setDropdown(false);
     navigate("/login");
