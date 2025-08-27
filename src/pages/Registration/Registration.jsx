@@ -55,7 +55,7 @@ function Registration() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                class="form-control mb-3"
+                className="form-control mb-3"
                 placeholder="Enter your name"
                 required
               />
@@ -64,7 +64,7 @@ function Registration() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                class="form-control mb-3"
+                className="form-control mb-3"
                 placeholder="Enter your email"
               />
               <input
@@ -72,7 +72,7 @@ function Registration() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                class="form-control mb-3"
+                className="form-control mb-3"
                 placeholder="Enter your phone number"
               />
               <input
@@ -80,7 +80,7 @@ function Registration() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                class="form-control mb-3"
+                className="form-control mb-3"
                 placeholder="Enter your password"
               />
       

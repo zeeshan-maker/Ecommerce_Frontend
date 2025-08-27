@@ -10,6 +10,7 @@ export const useCartSelector = ()=>{
 
 export const useAuthSelector = () =>{
     return {
-        token: useSelector((state)=> state.auth.token)
+        token: useSelector((state)=> state.auth.token),
+        user: useSelector((state)=> state.auth.user)
     }
 }
