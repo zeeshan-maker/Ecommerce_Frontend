@@ -3,9 +3,7 @@ import { login, logout } from "./features/authSlice";
 import {
   addToCart,
   removeFromCart,
-  decreaseQuantity,
-  clearCart,
-} from "./features/cartSlice";
+ } from "./features/cartSlice";
 
 export function useDispatcher() {
   const dispatch = useDispatch();
@@ -20,8 +18,6 @@ export function useDispatcher() {
     },
 
     addItem: (product) => dispatch(addToCart(product)),
-    removeItem: (id) => dispatch(removeFromCart(id)),
-    decreaseQty: (id) => dispatch(decreaseQuantity(id)),
-    clear: () => dispatch(clearCart()),
+    removeItem: (product_id) => dispatch(removeFromCart(product_id))
   };
 }

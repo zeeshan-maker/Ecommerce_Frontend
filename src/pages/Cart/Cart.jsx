@@ -29,7 +29,6 @@ function Cart() {
             <th className="d-none d-md-table-cell">Title</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Size</th>
             <th>Total</th>
             <th>Remove</th>
           </tr>
@@ -44,7 +43,6 @@ function Cart() {
             <td className="d-none d-md-table-cell">{product.name}</td>
             <td>${product.price}</td>
             <td>{product.quantity}</td>
-            <td>{product.size}</td>
             <td>${product.price * product.quantity}</td>
             <td>
               <button 

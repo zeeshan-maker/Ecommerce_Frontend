@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Cart from "../pages/Cart/Cart";
 
+
 const AppRoutes = () => {
    return (
     <Routes>
@@ -19,11 +20,7 @@ const AppRoutes = () => {
       <Route path="/product/:product_id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />
-
-      {/* User Routes */}
-      <Route path="/cart" element={<Cart />} />
-       
-    </Routes>
+      <Route path="/cart" element={<Cart />} /></Routes>
   );
 };
 
