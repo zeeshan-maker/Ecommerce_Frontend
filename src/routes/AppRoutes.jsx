@@ -7,7 +7,7 @@ import Kids from "../pages/Kids/Kids";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Cart from "../pages/Cart/Cart";
-
+import AdminRoutes from "./AdminRoutes";
 
 const AppRoutes = () => {
    return (
@@ -20,7 +20,12 @@ const AppRoutes = () => {
       <Route path="/product/:product_id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Registration />} />
-      <Route path="/cart" element={<Cart />} /></Routes>
+      <Route path="/cart" element={<Cart />} />
+
+       {/* Admin only */}
+      <Route path="/admin/*" element={<AdminRoutes />} />
+      
+      </Routes>
   );
 };
 

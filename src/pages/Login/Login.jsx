@@ -29,8 +29,7 @@ function Login() {
     try {
       const res = await loginUser(formData)
       login({"token":res.token, "user":res.user})
-      toast.success(res.message);
-      navigate("/")
+      res?.user.role === "admin" ? navigate("/admin/dashboard"):navigate("/")
     } catch (error) {
       toast.error(error.response.data.message)
     }
@@ -66,7 +65,7 @@ function Login() {
             </form> 
             <p className="mt-4 text-center">Are you new ? 
                 <Link className="text-primary" to="/registration"> Create an Account</Link>
-                </p>
+            </p>
            </div>
           </div>
         </div>

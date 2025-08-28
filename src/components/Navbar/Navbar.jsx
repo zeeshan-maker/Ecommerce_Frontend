@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/Frontend_Assets/logo.png";
+import admin_logo from "../../assets/Admin_Assets/nav-logo.svg";
 import person from "../../assets/Frontend_Assets/user-avatar.png"
 import { BsCart2 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ import { useDispatcher } from "../../redux/useDispatcher";
 
 function Navbar() {
     const { cart } = useCartSelector();
-    const { token } = useAuthSelector();
+    const { token, user } = useAuthSelector();
     const { logout } = useDispatcher();
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
@@ -29,11 +30,17 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container d-flex justify-content-between">
-       <div className="d-flex align-items-center logo" onClick={()=>navigate("/")}>
-         <img src={logo} alt="logo" />
-        <h3 className="ms-1 shopper">SHOPPER</h3>
+       <div className="d-flex align-items-center logo">
+         {
+          token && user?.role ==="admin" ?
+          <img src={admin_logo} alt="logo" onClick={()=>navigate("/admin/dashboard")} />
+          :<img src={logo} alt="logo" onClick={()=>navigate("/")} />
+         }
        </div>
-        <div className={`d-flex nav-item-container ${show ? "show" : ""}`}>
+      
+         {
+          user?.role === "admin" ? "": 
+          <div className={`d-flex nav-item-container ${show ? "show" : ""}`}>
           <NavLink 
           to="/"
           onClick={() => setShow(false)}
@@ -63,6 +70,8 @@ function Navbar() {
             Kids
           </NavLink>
         </div>
+         }
+       
 
         <div className="d-flex">
           
@@ -82,8 +91,12 @@ function Navbar() {
             </div>
             :<button className="logout-button" onClick={()=>navigate("/login")}>Login</button>
          }
+          {
+            token && user.role !== "admin" && <>
             <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
             <span className="counter">{cart.length}</span>
+             </>
+          }
 
            <div className="menu">
             {
