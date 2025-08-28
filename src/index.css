@@ -64,3 +64,12 @@ code {
   background-color: var(--white-color);
   color: var(--black-color);
 }
+
+
+.button {
+  background-color: var(--orange-color);
+  color: var(--white-color);
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 10px;
+}

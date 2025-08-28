@@ -1,7 +1,7 @@
 // src/pages/admin/AddProduct.js
 import React, { useState, useEffect } from 'react';
 import './AddProduct.css';
-import { fetchCategories } from '../../../services/categoryService';
+// import { fetchCategories } from '../../../services/categoryService';
 import { toast } from 'react-toastify';
 import { addProduct } from '../../../services/productService';
 
@@ -56,17 +56,17 @@ const AddProduct = () => {
     }
   }
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const res = await fetchCategories();
-        setCategories(res);
-      } catch (error) {
-        toast.error(error.response.data.error)
-      }
-    }
-    getCategories();
-  }, [])
+  // useEffect(() => {
+  //   const getCategories = async () => {
+  //     try {
+  //       const res = await fetchCategories();
+  //       setCategories(res);
+  //     } catch (error) {
+  //       toast.error(error.response.data.error)
+  //     }
+  //   }
+  //   getCategories();
+  // }, [])
   return (
 
     <div className="form-container">

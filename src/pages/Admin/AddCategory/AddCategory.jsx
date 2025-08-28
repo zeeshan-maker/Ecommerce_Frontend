@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import "./AddCategory.css";
+import  { useState } from "react";
 import { addCategories } from "../../../services/categoryService";
 import { toast } from "react-toastify";
+
+
 const CategoryPage = () => {
   const [name, setName] = useState("");
   
@@ -19,26 +20,25 @@ const CategoryPage = () => {
   };
 
   return (
-    <div className="page-wrapper">
-      <div className="category-card">
-        <h2 className="title">Add New Category</h2>
-
-        <form className="form" onSubmit={handleSubmit}>
-          <input
+   
+      <div className="h-100 d-flex justify-content-center align-items-center">
+        <form onSubmit={handleSubmit} className="w-50 shadow-lg p-lg-4">
+          <h4 className="mb-3">Add New Category</h4>
+          <div className="d-flex">
+            <input
             type="text"
             placeholder="Category Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="input"
+            className="form-control"
           />
-          <button type="submit" className="btn">
-            Add
-          </button>
+          <button type="submit" className="button ms-2">Add</button>
+          </div>
+          
+        
         </form>
-
-     
       </div>
-    </div>
+    
   );
 };
 

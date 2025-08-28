@@ -4,7 +4,7 @@ import { MdInventory2 } from "react-icons/md";
 import "./Sidebar.css";
 
 const Sidebar = () => (
-  <div className="sidebar">
+  <div className="sidebar shadow-sm">
     <ul>
       <li>
         <NavLink

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/Frontend_Assets/logo.png";
 import admin_logo from "../../assets/Admin_Assets/nav-logo.svg";
-import person from "../../assets/Frontend_Assets/user-avatar.png"
 import { BsCart2 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import menu from "../../assets/Frontend_Assets/menu.png"
@@ -17,12 +16,9 @@ function Navbar() {
     const { logout } = useDispatcher();
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
-    const [dropdown, setDropdown] = useState(false);
-
-
-     const handleLogout = () => {
+  
+    const handleLogout = () => {
     logout();
-    setDropdown(false);
     navigate("/login");
   };
 
@@ -77,22 +73,11 @@ function Navbar() {
           
          {
           token? 
-           <div className="position-relative"> 
-          <img src={person} alt="person" 
-          className="img-fluid me-3 login"
-            onClick={() => setDropdown((prev) => !prev)}
-          />
-           {
-           dropdown && (
-                <div className="dropdown-menu-custom shadow">
-                  <button className="dropdown-item" onClick={handleLogout}>Logout</button>
-                </div>
-              )}
-            </div>
-            :<button className="logout-button" onClick={()=>navigate("/login")}>Login</button>
+          <button className="logout-button" onClick={()=>handleLogout()}>Logout</button>
+          :<button className="logout-button" onClick={()=>navigate("/login")}>Login</button>
          }
           {
-            token && user.role !== "admin" && <>
+            user?.role === "admin" ? "": <>
             <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
             <span className="counter">{cart.length}</span>
              </>

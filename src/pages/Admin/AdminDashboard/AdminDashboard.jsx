@@ -1,11 +1,24 @@
 import './AdminDashboard.css';
-import all_product from '../../../assets/Frontend_Assets/all_product';
-
+import { useState, useEffect } from 'react';
+import { getAllProduct, deleteProduct } from "../../../services/productService"
+import { toast } from 'react-toastify';
 
 const AdminDashboard = () => {
+  const [products, setProducts] = useState([]);
 
- console.log("#######333",all_product)
-  if(all_product.length === 0){
+  useEffect(()=>{
+    const fetchAllProduct = async ()=>{
+        try {
+          const res = await getAllProduct();
+        setProducts(res?.products)
+        } catch (error) {
+          toast.error(error?.response?.data?.message)
+        }
+    }
+    fetchAllProduct();
+  },[])
+
+  if(products.length === 0){
     return(
       <h1 className='product-heading'>Data Not Found</h1>
     )
@@ -13,7 +26,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="product-list-container">
-      <h1 className='product-heading'>All Products List</h1>
+      <h4 className='product-heading'>All Products List</h4>
       <div className="product-table">
         <div className="product-header">
           <span>Image</span>
@@ -23,14 +36,14 @@ const AdminDashboard = () => {
           <span>Action</span>
         </div>
         <div className='list'>
-        {all_product.map(product => (
-          <div className="product-row" key={product.id}>
-            <div><img src={product.image[0]} alt={product.name} /></div>
+        {products.map(product => (
+          <div className="product-row" key={product.product_id}>
+            <div><img src={product.images[0]} alt={product.name} /></div>
             <div>{product.name}</div>
-            <div>₹{product.new_price}</div>
-            <div>Category</div>
+            <div>₹{product.price}</div>
+            <div>{product?.Category?.name}</div>
             <div>
-              <button className="remove-btn">Remove</button>
+              <button className="remove-btn" onClick={()=>deleteProduct(product?.product_id)}>Remove</button>
             </div>
           </div>
         ))}
