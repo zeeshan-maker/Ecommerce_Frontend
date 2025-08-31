@@ -26,7 +26,7 @@ const AdminRoutes = () => {
             <AdminLayout>
               <AddProduct />
             </AdminLayout>
-          </ProtectedRoute>
+           </ProtectedRoute>
         }
       />
 
