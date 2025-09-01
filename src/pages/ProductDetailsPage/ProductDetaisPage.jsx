@@ -9,6 +9,7 @@ function ProductDetaisPage() {
    const { addItem } = useDispatcher();
   const { product_id } = useParams();
   const [product, setProduct] = useState("");
+  const [sizes, setSizes] =useState(null)
    const [selectedSize, setSelectedSize] = useState("S");
    const [mainImage, setMainImage] = useState(null);
 
@@ -18,6 +19,7 @@ function ProductDetaisPage() {
       try {
         const res = await getProductById(product_id)
         setProduct(res.product)
+        setSizes(JSON.parse(res?.product?.sizes))
         setMainImage(res.product.images[0])
       } catch (error) {
         toast.error(error.response.data.message)
@@ -46,7 +48,7 @@ function ProductDetaisPage() {
               }
             </div>
             <div className="col-lg-10 order-1 order-sm-2">
-              <img src={mainImage} alt={product.name} className="img-fluid main-image" />
+              <img src={mainImage} alt={product.name} className="img-fluid product-image" />
             </div>
           </div>
         </div>
@@ -57,7 +59,9 @@ function ProductDetaisPage() {
           <p className="text-secondary">{product.description}</p>
           <h6 className="mb-lg-4">Select Size</h6>
          <div className="mb-lg-4 mb-3 size-options">
-        {product?.sizes?.map((size) => (
+        {
+
+        sizes?.map((size) => (
           <div
             key={size}
             className={`size-option ${selectedSize === size ? "active" : ""}`}
@@ -65,7 +69,9 @@ function ProductDetaisPage() {
           >
             {size}
           </div>
-        ))}
+        ))
+
+        }
          </div>
          <button 
          className="add-to-card-button" 
