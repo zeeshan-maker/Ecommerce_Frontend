@@ -1,6 +1,7 @@
 import "./ForgotPassword.css";
 import email_logo from "../../assets/Frontend_Assets/communication.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -33,6 +34,8 @@ function ForgotPassword() {
               required
             />
             <button className="button my-3 w-100">Send</button>
+            <Link to="/login" className="text-decoration-none text-secondary">Back To Login</Link>
+      
           </form>
         </div>
       </div>
