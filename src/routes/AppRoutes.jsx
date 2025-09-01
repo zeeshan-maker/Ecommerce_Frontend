@@ -8,7 +8,7 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Cart from "../pages/Cart/Cart";
 import AdminRoutes from "./AdminRoutes";
-
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 const AppRoutes = () => {
    return (
     <Routes>
@@ -19,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/kids" element={<Kids />} />
       <Route path="/product/:product_id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="/cart" element={<Cart />} />
 

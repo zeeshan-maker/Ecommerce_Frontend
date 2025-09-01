@@ -60,7 +60,9 @@ function Login() {
                 placeholder="Enter your password"
                 required
               />
-              <p className="text-end text-primary">Forget Password?</p>
+              <p className="text-end text-primary">
+                <Link to="/forgot-password">Forget Password?</Link>
+                </p>
               <button type="submit" className="btn btn-login w-100">Login</button>
             </form> 
             <p className="mt-4 text-center">Are you new ? 
