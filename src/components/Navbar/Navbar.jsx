@@ -65,7 +65,7 @@ function Navbar() {
           >
             Kids
           </NavLink>
-        </div>
+          </div>
          }
        
 

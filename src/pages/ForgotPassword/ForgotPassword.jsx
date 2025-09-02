@@ -13,7 +13,7 @@ function ForgotPassword() {
   return (
     <div className="container">
       <div className="row py-5 d-flex justify-content-center">
-        <div className="col-lg-4 col-md-5 col-sm-6 col-12 p-5 shadow-lg text-center">
+        <div className="col-lg-4 col-md-5 col-sm-6 col-12 p-lg-5 p-3 shadow-lg text-center">
           <h4 className="text-center mb-3">Forgot Password</h4>
           <div>
             <img src={email_logo} alt="email" className="mb-3" />
