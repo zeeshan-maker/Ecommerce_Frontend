@@ -1,7 +1,52 @@
-import lock from "../../assets/Frontend_Assets/reset-password.png"
+import lock from "../../assets/Frontend_Assets/reset-password.png";
+import { useState } from "react";
+import { resetPassword } from "../../services/authService";
+import { toast } from "react-toastify";
+import { useParams, useNavigate } from "react-router-dom";
+
+
 function ResetPassword() {
-  const handleSubmit = (e) =>{
+  const { token } = useParams();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigation = useNavigate();
+ 
+  const handleSubmit = async (e) =>{
     e.preventDefault();
+     // Reset error
+    setError("");
+    // Password validation rules
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      return;
+    }
+     if (!/[A-Z]/.test(password)) {
+      setError("Password must contain at least one uppercase letter.");
+      return;
+    }
+     if (!/[0-9]/.test(password)) {
+      setError("Password must contain at least one number.");
+      return;
+    }
+     if (!/[!@#$%^&*]/.test(password)) {
+      setError("Password must contain at least one special character (!@#$%^&*).");
+      return;
+    }
+     if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const res = await resetPassword(token,password)
+      toast.success(res?.message)
+      setPassword("");
+      setConfirmPassword("");
+      navigation("/login")
+    } catch (error) {
+      toast.error(error?.response?.data?.error)
+    }
   }
   return (
      <div className="container">
@@ -14,6 +59,7 @@ function ResetPassword() {
           <p className="fphs mb-3">
             Your new password must be different from previous used passwords.
           </p>
+           {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="password" className="form-label ">Password</label>
@@ -21,8 +67,11 @@ function ResetPassword() {
               type="password"
               id="password"
               className="form-control"
+               value={password}
+                onChange={(e) => setPassword(e.target.value)}
               required
             />
+      
             </div>
              <div className="mb-3">
               <label htmlFor="confirmPassword" className="form-label ">Confirm Password</label>
@@ -30,8 +79,11 @@ function ResetPassword() {
               type="password"
               id="confirmPassword"
               className="form-control"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+    
             </div>
             <button className="button my-3 w-100">Reset Password</button>
                   

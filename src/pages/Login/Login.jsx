@@ -31,7 +31,7 @@ function Login() {
       login({"token":res.token, "user":res.user})
       res?.user.role === "admin" ? navigate("/admin/dashboard"):navigate("/")
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error?.response?.data?.message)
     }
   }
   return (

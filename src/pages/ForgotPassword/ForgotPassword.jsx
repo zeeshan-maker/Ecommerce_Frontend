@@ -2,13 +2,21 @@ import "./ForgotPassword.css";
 import email_logo from "../../assets/Frontend_Assets/communication.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {forgotPassword} from "../../services/authService"
+import { toast } from "react-toastify";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit =(e)=>{
+  const handleSubmit =async(e)=>{
      e.preventDefault();
-    console.log("Email:", email);
+    try {
+      const res = await forgotPassword(email);
+      toast.success(res?.message)
+      setEmail("")
+    } catch (error) {
+        toast.error(error?.response?.data?.error)
+    }
   }
   return (
     <div className="container">
