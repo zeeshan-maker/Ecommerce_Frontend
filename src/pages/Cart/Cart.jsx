@@ -1,8 +1,12 @@
 import { useCartSelector } from "../../redux/useSelectors";
 import { useDispatcher } from "../../redux/useDispatcher";
 import { toast } from "react-toastify";
-import "./Cart.css"
+import "./Cart.css";
+import { useNavigate } from 'react-router-dom';
+
+
 function Cart() {
+  const navgation = useNavigate();
   const { cart } = useCartSelector();
   const { removeItem } = useDispatcher();
 
@@ -46,7 +50,7 @@ function Cart() {
             <td>${product.price * product.quantity}</td>
             <td>
               <button 
-              className="btn btn-sm btn-danger" 
+              className="button" 
               onClick={()=>{
                 removeItem({product_id:product.product_id,size:product.size})
                 toast.success("Product Remove successfully.")
@@ -70,14 +74,16 @@ function Cart() {
 
              <div className="d-flex justify-content-between">
               <h6>Shipping Fee</h6>
-              <h6>{shippingFee === 0 ? "Free" : `$${shippingFee}`}</h6>
+              <h6>{shippingFee === 0 ? "Free" : `${shippingFee}`}</h6>
             </div> <hr/>
 
            <div className="d-flex justify-content-between mb-4">
               <h6 className="fw-bold">Total</h6>
               <h6 className="fw-bold">${total}</h6>
             </div>
-            <div className="text-end"><button className="checkout-button">Proceed To Checkout</button></div>
+            <div className="text-end">
+              <button className="checkout-button" onClick={()=>navgation('/checkout')}>Proceed To Checkout</button>
+            </div>
           </div>
          
          </div>

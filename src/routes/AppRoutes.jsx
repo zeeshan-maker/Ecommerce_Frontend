@@ -10,6 +10,9 @@ import Cart from "../pages/Cart/Cart";
 import AdminRoutes from "./AdminRoutes";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import Checkout from "../pages/Checkout/Checkout";
+import ProtectedRoute from "./ProtectedRoute";
+
 const AppRoutes = () => {
    return (
     <Routes>
@@ -24,6 +27,13 @@ const AppRoutes = () => {
       <Route path="/reset-password/:token" element={<ResetPassword />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" 
+      element={
+         <ProtectedRoute role="customer">
+          <Checkout/>
+         </ProtectedRoute>
+   } 
+      />
 
        {/* Admin only */}
       <Route path="/admin/*" element={<AdminRoutes />} />

@@ -4,7 +4,8 @@ import AdminLayout from "../layouts/AdminLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import AddProduct from "../pages/Admin/AddProduct/AddProduct";
 import AddCategory from "../pages/Admin/AddCategory/AddCategory"
-import Orders from "../pages/Admin/Orders/Orders"
+import Orders from "../pages/Admin/Orders/Orders";
+
 const AdminRoutes = () => {
   return (
     <Routes>
