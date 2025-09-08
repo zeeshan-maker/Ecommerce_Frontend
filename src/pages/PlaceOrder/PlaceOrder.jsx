@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useCartSelector } from "../../redux/useSelectors";
 import "./PlaceOrder.css";
-import { createStripeSession } from '../../services/paymentService';
-import { toast } from 'react-toastify';
+
 
 const PlaceOrder = () => {
-  const navigate = useNavigate();
+
   const { cart } = useCartSelector();
 
   const [formData, setFormData] = useState({
@@ -23,53 +21,22 @@ const PlaceOrder = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
-    try {
-            const res = await createStripeSession(formData);
-            window.location.href = res.url;
-          } catch (err) {
-            toast.error('Stripe error: ' + err.response?.data?.message || err.message);
-          }
+   
 
   };
 
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const shippingFee = 0;
+  const total = subtotal + shippingFee;
 
   return (
     <div className="container">
+      <form onSubmit={handlePlaceOrder}>
       <div className="row py-lg-4 py-2">
-        {/* Order Summary Section */}
-        <div className="col-lg-5 col-md-6">
-          {cart.map((item) => (
-
-            <div className="row mb-3" key={item.product_id}>
-              <div className="col-3">
-                <img
-                src={item.image ? item.image : ""}
-                alt={item.name}
-                className="img-fluid"
-              />
-              </div>
-              <div className="col-9">
-                  <div>{item.name}</div>
-                  <div>Price: {item.price}</div>
-                  <div> Qty: {item.quantity}</div>
-                  <div>₹ {item.price * item.quantity}</div>
-              </div>
-
-            </div>
-
-          ))}
-         <hr/>
-          <h5>Total Amount: ₹ {totalPrice}</h5>
-        
-        </div>
-
-
 
         {/* Shipping Address Form */}
-        <div className="col-lg-7 col-md-6">
-          <h3 className='text-center'>Shipping Address</h3>
-           <form onSubmit={handlePlaceOrder}>
+        <div className="col-lg-7 col-md-7 px-lg-5">
+          <h4 className='mb-3'>DELIVERY INFORMATION</h4>
              <div className='mb-2'>
             <label htmlFor="phone" className="form-label">Phone Number</label>
             <input 
@@ -130,12 +97,60 @@ const PlaceOrder = () => {
             onChange={handleChange} 
             required />
           </div>
-
-          <button type="submit" className="button">Place Order</button>
-        </form>
         </div>
-      </div>
 
+        {/* Order Summary Section */}
+         <div className="col-lg-5 col-md-5  px-lg-5">
+             <h4 className="mb-4">CART TOTALS</h4>
+            <div className="d-flex justify-content-between">
+              <h6>Subtotal</h6>
+              <h6>${subtotal}</h6>
+            </div> <hr/>
+
+             <div className="d-flex justify-content-between">
+              <h6>Shipping Fee</h6>
+              <h6>{shippingFee === 0 ? "Free" : `${shippingFee}`}</h6>
+            </div> <hr/>
+
+           <div className="d-flex justify-content-between mb-4">
+              <h6 className="fw-bold">Total</h6>
+              <h6 className="fw-bold">${total}</h6>
+            </div>
+            <div className='text-end'> 
+            <button type="submit" className="button">Place Order</button>
+          </div>
+
+          </div>
+
+        {/* <div className="col-lg-5 col-md-6">
+          {cart.map((item) => (
+
+            <div className="row mb-3" key={item.product_id}>
+              <div className="col-3">
+                <img
+                src={item.image ? item.image : ""}
+                alt={item.name}
+                className="img-fluid"
+              />
+              </div>
+              <div className="col-9">
+                  <div>{item.name}</div>
+                  <div>Price: {item.price}</div>
+                  <div> Qty: {item.quantity}</div>
+                  <div>₹ {item.price * item.quantity}</div>
+              </div>
+
+            </div>
+
+          ))}
+         <hr/>
+          <h5>Total Amount: ₹ {totalPrice}</h5>
+           <div className='text-end'> 
+            <button type="submit" className="button">Place Order</button>
+          </div>
+        </div> */}
+      </div>
+      </form>
     </div>
   );
 };
