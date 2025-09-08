@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCartSelector } from "../../redux/useSelectors";
-import "./Checkout.css";
+import "./PlaceOrder.css";
 import { createStripeSession } from '../../services/paymentService';
 import { toast } from 'react-toastify';
 
-const Checkout = () => {
+const PlaceOrder = () => {
   const navigate = useNavigate();
   const { cart } = useCartSelector();
 
@@ -13,7 +13,8 @@ const Checkout = () => {
     address: '',
     city: '',
     postalCode: '',
-    country: ''
+    country: '',
+    phone:"",
   });
 
   const handleChange = (e) => {
@@ -24,7 +25,7 @@ const Checkout = () => {
     e.preventDefault();
     try {
             const res = await createStripeSession(formData);
-            // window.location.href = res.url;
+            window.location.href = res.url;
           } catch (err) {
             toast.error('Stripe error: ' + err.response?.data?.message || err.message);
           }
@@ -69,6 +70,19 @@ const Checkout = () => {
         <div className="col-lg-7 col-md-6">
           <h3 className='text-center'>Shipping Address</h3>
            <form onSubmit={handlePlaceOrder}>
+             <div className='mb-2'>
+            <label htmlFor="phone" className="form-label">Phone Number</label>
+            <input 
+              id='phone'
+              name="phone"
+              type='text'
+              className="form-control" 
+             value={formData.phone} 
+             onChange={handleChange} 
+             required />
+          </div>
+
+
           <div className='mb-2'>
             <label htmlFor="address" className="form-label">Address</label>
             <input 
@@ -126,4 +140,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default PlaceOrder;
