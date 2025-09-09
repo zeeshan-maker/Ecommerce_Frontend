@@ -1,21 +1,7 @@
 import Card from "../Card/Card"
-import { getAllProduct } from "../../services/productService";
-import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
 
-function NewCollections() {
-    const [products, setProducts] = useState([])
-        useEffect(()=>{
-            const fetchAllProduct = async ()=>{
-              try {
-                const res= await getAllProduct();
-                setProducts(res.products)
-              } catch (error) {
-                toast.error(error.response.data.message)
-              }
-            }
-            fetchAllProduct()
-        },[])
+function NewCollections({products}) {
+    
   return (
     <div className="container py-lg-4">
         <div className="row">
