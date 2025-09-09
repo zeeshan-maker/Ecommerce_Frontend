@@ -22,7 +22,7 @@ function ProductDetaisPage() {
         setSizes(JSON.parse(res?.product?.sizes))
         setMainImage(res.product.images[0])
       } catch (error) {
-        toast.error(error.response.data.message)
+        toast.error(error?.response?.data.message)
       }
     }
 
@@ -76,7 +76,7 @@ function ProductDetaisPage() {
          <button 
          className="add-to-card-button" 
          onClick={()=>{
-          addItem({product_id:product.product_id,image:product.images[0],name:product.name,price:product.price,size:selectedSize})
+          addItem({product_id:product.product_id,image:product.images[0],name:product.name,price:product.price,size:selectedSize, category_id:product.category_id})
           toast.success("Product Added!")
          }}>Add To Cart</button>
         </div>
