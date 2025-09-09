@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useCartSelector } from "../../redux/useSelectors";
 import "./PlaceOrder.css";
-
+import stripe from "../../assets/Frontend_Assets/stripe-logo-svg-vector.svg"
+import razorpay from "../../assets/Frontend_Assets/Razorpay_logo.svg";
+import { toast } from 'react-toastify';
+import { placeOrder } from "../../services/orderService"
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
-
+  const navigate = useNavigate();
+  const [method, setMethod] = useState("cod")
   const { cart } = useCartSelector();
 
   const [formData, setFormData] = useState({
@@ -15,19 +20,45 @@ const PlaceOrder = () => {
     phone:"",
   });
 
+   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const shippingFee = 0;
+  const total = subtotal + shippingFee;
+
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
+    try {
+      let orderData = {
+        address:formData,
+        items: cart,
+        amount:total
+      }
+
+      switch(method){
+        case 'cod':
+         try {
+           const res = await placeOrder(orderData);
+           toast.success(res?.message)
+            navigate("/order")
+         } catch (error) {
+             toast.error(error?.response?.data?.error)
+         }
+          break;
+
+        default:
+          break;
+      }
+    } catch (error) {
+      console.log(error)
+    }
    
 
   };
 
-   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const shippingFee = 0;
-  const total = subtotal + shippingFee;
 
   return (
     <div className="container">
@@ -35,7 +66,7 @@ const PlaceOrder = () => {
       <div className="row py-lg-4 py-2">
 
         {/* Shipping Address Form */}
-        <div className="col-lg-7 col-md-7 px-lg-5">
+        <div className="col-lg-6 col-md-6">
           <h4 className='mb-3'>DELIVERY INFORMATION</h4>
              <div className='mb-2'>
             <label htmlFor="phone" className="form-label">Phone Number</label>
@@ -100,7 +131,7 @@ const PlaceOrder = () => {
         </div>
 
         {/* Order Summary Section */}
-         <div className="col-lg-5 col-md-5  px-lg-5">
+         <div className="col-lg-6 col-md-6  px-lg-5">
              <h4 className="mb-4">CART TOTALS</h4>
             <div className="d-flex justify-content-between">
               <h6>Subtotal</h6>
@@ -116,40 +147,38 @@ const PlaceOrder = () => {
               <h6 className="fw-bold">Total</h6>
               <h6 className="fw-bold">${total}</h6>
             </div>
-            <div className='text-end'> 
-            <button type="submit" className="button">Place Order</button>
-          </div>
 
-          </div>
-
-        {/* <div className="col-lg-5 col-md-6">
-          {cart.map((item) => (
-
-            <div className="row mb-3" key={item.product_id}>
-              <div className="col-3">
-                <img
-                src={item.image ? item.image : ""}
-                alt={item.name}
-                className="img-fluid"
-              />
+            <div className='mt-lg-5'>
+              <h5 className='mb-lg-4'>PAYMENT METHOD</h5>
+              <div className="row">
+                <div className="col-3">
+                  <div className='payment-option p-3'>
+                    <img src={stripe} alt="strpe" className='img-fluid' />
+                  </div>
+                </div>
+                <div className="col-4">
+                   <div className='payment-option p-3'>
+                    <img src={razorpay} alt="razorpay" className='img-fluid' />
+                   </div>
+                  
+                </div>
+        
+                <div className="col-5">
+                  <div className='payment-option'>
+                    <span className="bg-success rounded-circle d-inline-block dot"></span>
+                     <span className='cod'>Cash On Delivery</span>
+                   </div>
+                </div>
               </div>
-              <div className="col-9">
-                  <div>{item.name}</div>
-                  <div>Price: {item.price}</div>
-                  <div> Qty: {item.quantity}</div>
-                  <div>₹ {item.price * item.quantity}</div>
-              </div>
-
             </div>
 
-          ))}
-         <hr/>
-          <h5>Total Amount: ₹ {totalPrice}</h5>
-           <div className='text-end'> 
-            <button type="submit" className="button">Place Order</button>
+            <div className='text-end mt-3'> 
+            <button type="submit" className="button2">Place Order</button>
           </div>
-        </div> */}
-      </div>
+
+          </div>
+
+       </div>
       </form>
     </div>
   );

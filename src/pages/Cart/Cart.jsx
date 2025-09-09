@@ -82,7 +82,7 @@ function Cart() {
               <h6 className="fw-bold">${total}</h6>
             </div>
             <div className="text-end">
-              <button className="checkout-button" onClick={()=>navgation('/place-order')}>Proceed To Checkout</button>
+              <button className="button2" onClick={()=>navgation('/place-order')}>Proceed To Checkout</button>
             </div>
           </div>
          

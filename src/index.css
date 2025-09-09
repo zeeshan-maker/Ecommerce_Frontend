@@ -76,3 +76,12 @@ code {
   border: none;
   border-radius: 10px;
 }
+
+
+.button2{
+  background-color: var(--orange-color);
+  color: var(--white-color);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  transition: all 0.3s ease;
+}

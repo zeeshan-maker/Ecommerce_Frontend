@@ -12,6 +12,7 @@ import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import PlaceOrder from "../pages/PlaceOrder/PlaceOrder";
 import ProtectedRoute from "./ProtectedRoute";
+import Order from "../pages/Order/Order";
 
 const AppRoutes = () => {
    return (
@@ -32,7 +33,15 @@ const AppRoutes = () => {
          <ProtectedRoute role="customer">
           <PlaceOrder/>
          </ProtectedRoute>
-   } 
+        } 
+      />
+
+      <Route path="/order" 
+      element={
+         <ProtectedRoute role="customer">
+          <Order/>
+         </ProtectedRoute>
+        } 
       />
 
        {/* Admin only */}
