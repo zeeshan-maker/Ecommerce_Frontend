@@ -45,9 +45,9 @@ function Cart() {
               <img src={product.image} alt={product.name} className="cart-product-image" />
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
-            <td>${product.price}</td>
+            <td>₹{product.price}</td>
             <td>{product.quantity}</td>
-            <td>${product.price * product.quantity}</td>
+            <td>₹{product.price * product.quantity}</td>
             <td>
               <button 
               className="button" 
@@ -69,7 +69,7 @@ function Cart() {
              <h4 className="mb-4">Cart Totals</h4>
             <div className="d-flex justify-content-between">
               <h6>Subtotal</h6>
-              <h6>${subtotal}</h6>
+              <h6>₹{subtotal}</h6>
             </div> <hr/>
 
              <div className="d-flex justify-content-between">
@@ -79,7 +79,7 @@ function Cart() {
 
            <div className="d-flex justify-content-between mb-4">
               <h6 className="fw-bold">Total</h6>
-              <h6 className="fw-bold">${total}</h6>
+              <h6 className="fw-bold">₹{total}</h6>
             </div>
             <div className="text-end">
               <button className="button2" onClick={()=>navgation('/place-order')}>Proceed To Checkout</button>

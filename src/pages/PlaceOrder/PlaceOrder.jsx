@@ -4,7 +4,11 @@ import "./PlaceOrder.css";
 import stripe from "../../assets/Frontend_Assets/stripe-logo-svg-vector.svg";
 import razorpay from "../../assets/Frontend_Assets/Razorpay_logo.svg";
 import { toast } from "react-toastify";
-import { placeOrder, placeOrderWithStripe, placeOrderWithRazorpay } from "../../services/orderService";
+import {
+  placeOrder,
+  placeOrderWithStripe,
+  placeOrderWithRazorpay,
+} from "../../services/orderService";
 import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
@@ -15,6 +19,7 @@ const PlaceOrder = () => {
   const [formData, setFormData] = useState({
     address: "",
     city: "",
+    state: "",
     postalCode: "",
     country: "",
     phone: "",
@@ -45,7 +50,7 @@ const PlaceOrder = () => {
           try {
             const res = await placeOrder(orderData);
             toast.success(res?.message);
-            // navigate("/order");
+            navigate("/order");
           } catch (error) {
             toast.error(error?.response?.data?.error);
           }
@@ -54,23 +59,22 @@ const PlaceOrder = () => {
         case "stripe":
           try {
             const res = await placeOrderWithStripe(orderData);
-            toast.success(res?.message);
-            // navigate("/order");
+            const session_url = res.session_url;
+            window.location.replace(session_url);
           } catch (error) {
             toast.error(error?.response?.data?.error);
           }
           break;
 
-          case "razorpay":
+        case "razorpay":
           try {
             const res = await placeOrderWithRazorpay(orderData);
             toast.success(res?.message);
-            // navigate("/order");
           } catch (error) {
             toast.error(error?.response?.data?.error);
           }
           break;
-          
+
         default:
           break;
       }
@@ -87,21 +91,6 @@ const PlaceOrder = () => {
           <div className="col-lg-6 col-md-6">
             <h4 className="mb-3">DELIVERY INFORMATION</h4>
             <div className="mb-2">
-              <label htmlFor="phone" className="form-label">
-                Phone Number
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="text"
-                className="form-control"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="mb-2">
               <label htmlFor="address" className="form-label">
                 Address
               </label>
@@ -116,46 +105,86 @@ const PlaceOrder = () => {
               />
             </div>
 
-            <div className="mb-3">
-              <label htmlFor="city" className="form-label">
-                City
-              </label>
-              <input
-                id="city"
-                type="text"
-                name="city"
-                className="form-control"
-                value={formData.city}
-                onChange={handleChange}
-                required
-              />
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="mb-3">
+                  <label htmlFor="city" className="form-label">
+                    City
+                  </label>
+                  <input
+                    id="city"
+                    type="text"
+                    name="city"
+                    className="form-control"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6">
+                <div className="mb-3">
+                  <label htmlFor="state" className="form-label">
+                    State
+                  </label>
+                  <input
+                    id="state"
+                    type="text"
+                    name="state"
+                    className="form-control"
+                    value={formData.state}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="mb-3">
-              <label className="form-label" htmlFor="postalCode">
-                Postal Code
-              </label>
-              <input
-                id="postalCode"
-                type="text"
-                name="postalCode"
-                className="form-control"
-                value={formData.postalCode}
-                onChange={handleChange}
-                required
-              />
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="mb-3">
+                  <label className="form-label" htmlFor="postalCode">
+                    Postal Code
+                  </label>
+                  <input
+                    id="postalCode"
+                    type="text"
+                    name="postalCode"
+                    className="form-control"
+                    value={formData.postalCode}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6">
+                <div className="mb-3">
+                  <label className="form-label" htmlFor="country">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    className="form-control"
+                    value={formData.country}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="mb-3">
-              <label className="form-label" htmlFor="country">
-                Country
+            <div className="mb-2">
+              <label htmlFor="phone" className="form-label">
+                Phone Number
               </label>
               <input
+                id="phone"
+                name="phone"
                 type="text"
-                id="country"
-                name="country"
                 className="form-control"
-                value={formData.country}
+                value={formData.phone}
                 onChange={handleChange}
                 required
               />
@@ -167,7 +196,7 @@ const PlaceOrder = () => {
             <h4 className="mb-4">CART TOTALS</h4>
             <div className="d-flex justify-content-between">
               <h6>Subtotal</h6>
-              <h6>${subtotal}</h6>
+              <h6>₹{subtotal}</h6>
             </div>{" "}
             <hr />
             <div className="d-flex justify-content-between">
@@ -177,7 +206,7 @@ const PlaceOrder = () => {
             <hr />
             <div className="d-flex justify-content-between mb-4">
               <h6 className="fw-bold">Total</h6>
-              <h6 className="fw-bold">${total}</h6>
+              <h6 className="fw-bold">₹{total}</h6>
             </div>
             <div className="mt-lg-5">
               <h5 className="mb-lg-4">PAYMENT METHOD</h5>
