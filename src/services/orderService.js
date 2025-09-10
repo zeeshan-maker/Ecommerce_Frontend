@@ -6,13 +6,15 @@ export const placeOrder = async (orderData)=>{
 
 }
 
-export const placeOrderWithStripe = async ()=>{
-    
+export const placeOrderWithStripe = async (orderData)=>{
+    const res = await api.post("/order/stripe",orderData)
+    return res.data;
 }
 
 
-export const placeOrderWithRazorpay = async ()=>{
-    
+export const placeOrderWithRazorpay = async (orderData)=>{
+    const res = await api.post("/order/razorpay",orderData)
+    return res.data;
 }
 
 
