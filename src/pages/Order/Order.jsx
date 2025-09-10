@@ -20,7 +20,11 @@ function Order() {
 
   return (
     <div>
-      Order
+      {
+        orderData.map((item)=>(
+          <p>{item.totalAmount}</p>
+        ))
+      }
     </div>
   )
 }

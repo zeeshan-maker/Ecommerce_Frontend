@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCartSelector } from "../../redux/useSelectors";
+import { useDispatcher } from "../../redux/useDispatcher";
 import "./PlaceOrder.css";
 import stripe from "../../assets/Frontend_Assets/stripe-logo-svg-vector.svg";
 import razorpay from "../../assets/Frontend_Assets/Razorpay_logo.svg";
@@ -15,6 +16,7 @@ const PlaceOrder = () => {
   const navigate = useNavigate();
   const [method, setMethod] = useState("cod");
   const { cart } = useCartSelector();
+  const { clearCart } = useDispatcher();
 
   const [formData, setFormData] = useState({
     address: "",
@@ -50,6 +52,7 @@ const PlaceOrder = () => {
           try {
             const res = await placeOrder(orderData);
             toast.success(res?.message);
+            clearCart();
             navigate("/order");
           } catch (error) {
             toast.error(error?.response?.data?.error);

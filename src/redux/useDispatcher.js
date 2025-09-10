@@ -3,6 +3,7 @@ import { login, logout } from "./features/authSlice";
 import {
   addToCart,
   removeFromCart,
+  clearCart
  } from "./features/cartSlice";
 
 export function useDispatcher() {
@@ -18,6 +19,7 @@ export function useDispatcher() {
     },
 
     addItem: (product) => dispatch(addToCart(product)),
-    removeItem: (product_id) => dispatch(removeFromCart(product_id))
+    removeItem: (product_id) => dispatch(removeFromCart(product_id)),
+    clearCart:()=>dispatch(clearCart())
   };
 }
