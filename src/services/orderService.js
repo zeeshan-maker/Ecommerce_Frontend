@@ -11,6 +11,11 @@ export const placeOrderWithStripe = async (orderData)=>{
     return res.data;
 }
 
+export const verifyStripe = async (data)=>{
+    const res = await api.post("/order/verify-stripe", data);
+    return res.data;
+}
+
 
 export const placeOrderWithRazorpay = async (orderData)=>{
     const res = await api.post("/order/razorpay",orderData)

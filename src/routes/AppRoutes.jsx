@@ -13,6 +13,7 @@ import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import PlaceOrder from "../pages/PlaceOrder/PlaceOrder";
 import ProtectedRoute from "./ProtectedRoute";
 import Order from "../pages/Order/Order";
+import Verify from "../pages/Verify/Verify";
 
 const AppRoutes = () => {
    return (
@@ -40,6 +41,13 @@ const AppRoutes = () => {
       element={
          <ProtectedRoute role="customer">
           <Order/>
+         </ProtectedRoute>
+        } 
+      />
+      <Route path="/verify" 
+      element={
+         <ProtectedRoute role="customer">
+          <Verify/>
          </ProtectedRoute>
         } 
       />

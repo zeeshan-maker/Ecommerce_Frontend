@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { getUserOrder } from "../../services/orderService"
 import { toast } from "react-toastify";
-
+import "./Order.css"
 function Order() {
     const [orderData, setOrderData]= useState([]);
 
     const loadOrderData = async ()=>{
       try {
         const res = await getUserOrder();
-        console.log(res?.orders)
         setOrderData(res?.orders)
       } catch (error) {
         toast.error(error?.response?.data?.error)
@@ -26,11 +25,11 @@ function Order() {
       </div>
         {
           orderData.map((order)=>(
-            <div key={order.order_id} className="row">
-                <div className="col-6">
+            <div key={order.order_id} className="row mb-3 p-lg-2 order-item">
+                <div className="col-lg-6 col-md-6">
                   {
-                    order?.OrderItems?.map((p)=>( 
-                   <div key={p?.Product.product_id} className="row">
+                    order?.OrderItems?.map((p,index)=>( 
+                   <div key={index} className="row">
                     <div className="col-3">
                        <img  src={p?.Product?.images[0]} alt=""
                     className="img-fluid mb-3"  />
@@ -49,10 +48,10 @@ function Order() {
                   ))
                   }
                 </div>
-                <div className="col-3">
+                <div className="col-lg-3 col-md-3 d-flex align-items-center">
                   <p>Out for Delivery</p>
                 </div>
-                <div className="col-3">
+                <div className="col-lg-3 col-md-3 d-flex align-items-center">
                   <p>Track Order</p>
                 </div>
             </div>
