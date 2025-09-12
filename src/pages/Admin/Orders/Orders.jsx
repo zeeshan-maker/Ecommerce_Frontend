@@ -17,7 +17,8 @@ export default function Orders() {
   const fetchAllOrder = async () => {
     try {
       const res = await getAllOrders();
-      setOrders(res);
+      console.log("#######33",res?.orders)
+      setOrders(res?.orders);
     } catch (error) {
       toast.error(error.response?.data?.error || "Failed to fetch orders");
     }
@@ -38,8 +39,8 @@ export default function Orders() {
   }, []);
 
   return (
-    <div className="orders-container">
-      <h2 className="orders-heading">All Orders</h2>
+    <div className="container">
+      <h4>All Orders</h4>
       <table className="orders-table">
         <thead>
           <tr>
@@ -74,10 +75,10 @@ export default function Orders() {
                     ))}
                   </select>
                 </td>
-                <td>₹{order.total_amount}</td>
+                <td>₹{order.totalAmount}</td>
                 <td>
-                  <span className={`status ${order.status.toLowerCase()}`}>
-                    {order.payment_status}
+                  <span className={`status ${order.orderStatus.toLowerCase()}`}>
+                    {order?.Payment?.paymentStatus}
                   </span>
                   
                 </td>

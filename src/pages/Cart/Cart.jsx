@@ -3,6 +3,8 @@ import { useDispatcher } from "../../redux/useDispatcher";
 import { toast } from "react-toastify";
 import "./Cart.css";
 import { useNavigate } from 'react-router-dom';
+import { FaTrash } from "react-icons/fa";
+
 
 
 function Cart() {
@@ -29,32 +31,36 @@ function Cart() {
          <table className="table align-middle text-center">
         <thead>
           <tr>
-            <th>Product</th>
+            <th className="text-start">Product</th>
             <th className="d-none d-md-table-cell">Title</th>
+            <th>Size</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
-            <th>Remove</th>
+            <th className="text-end">Remove</th>
           </tr>
         </thead>
         <tbody>
           {
             cart.map((product,index)=>(
               <tr key={index}>
-            <td>
+            <td className="text-start">
               <img src={product.image} alt={product.name} className="cart-product-image" />
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
+            <td>{product.size}</td>
             <td>₹{product.price}</td>
             <td>{product.quantity}</td>
             <td>₹{product.price * product.quantity}</td>
-            <td>
-              <button 
-              className="button" 
-              onClick={()=>{
+            <td className="text-end">
+              <FaTrash
+                className="delete-item"
+                onClick={()=>{
                 removeItem({product_id:product.product_id,size:product.size})
                 toast.success("Product Remove successfully.")
-              }}>X</button>
+              }}
+               />
+              
             </td>
               </tr>
             ))

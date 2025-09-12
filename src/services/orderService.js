@@ -23,8 +23,10 @@ export const updateOrder = async ()=>{
 }
 
 
+
 export const getAllOrders = async ()=>{
-    
+    const res = await api.get("/order/list");
+    return res.data;
 }
 
 

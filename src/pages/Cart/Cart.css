@@ -2,3 +2,9 @@
     width: 50px;
     height: auto;
 }
+
+.delete-item {
+  cursor: pointer;
+  color: var(--orange-color);
+  font-size: 24px;
+}

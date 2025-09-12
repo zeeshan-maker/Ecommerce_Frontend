@@ -1,17 +1,7 @@
-.orders-container {
-  width: 100%;
-  /* background-color: #f9f9f9; */
-}
 
-.orders-heading {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: center;
-}
 
 .orders-table {
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   border-collapse: collapse;
   background-color: white;
