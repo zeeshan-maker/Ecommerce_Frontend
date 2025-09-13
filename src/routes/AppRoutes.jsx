@@ -37,7 +37,7 @@ const AppRoutes = () => {
         } 
       />
 
-      <Route path="/order" 
+      <Route path="/orders" 
       element={
          <ProtectedRoute role="customer">
           <Order/>

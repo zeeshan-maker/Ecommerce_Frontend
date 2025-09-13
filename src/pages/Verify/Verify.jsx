@@ -16,7 +16,7 @@ export default function Verify() {
                 const res= await verifyStripe({success, order_id});
                 if(res?.success){
                     clearCart();
-                    navigate("/order")
+                    navigate("/orders")
                 }else{
                    navigate("/cart") 
                 }

@@ -15,8 +15,10 @@ function Navbar() {
     const { token, user } = useAuthSelector();
     const { logout } = useDispatcher();
     const navigate = useNavigate();
-    const [show, setShow] = useState(false)
-  
+    const [show, setShow] = useState(false);
+    const [dropdown, setDropdown] = useState(false);
+
+    
     const handleLogout = () => {
     logout();
     navigate("/login");
@@ -69,12 +71,27 @@ function Navbar() {
          }
        
 
-        <div className="d-flex">
-          
+        <div className="d-flex align-items-center position-relative">
          {
-          token? 
-          <button className="logout-button" onClick={()=>handleLogout()}>Logout</button>
-          :<button className="logout-button" onClick={()=>navigate("/login")}>Login</button>
+          token?(
+          <div className="position-relative">
+          <img 
+          src={user?.profileImage} 
+          alt={user.name}
+           onClick={() => setDropdown(!dropdown)}
+          className="img-fluid profile-image" />
+           {/* Dropdown */}
+              {dropdown && (
+                <div className="profile-dropdown shadow-sm">
+                  <p onClick={() => { setDropdown(false); navigate("/orders"); }}>
+                    My Orders
+                  </p>
+                  <p onClick={handleLogout}>Logout</p>
+                </div>
+              )}
+            </div>
+          )
+          :<button className="login-button" onClick={()=>navigate("/login")}>Login</button>
          }
           {
             user?.role === "admin" ? "": <>

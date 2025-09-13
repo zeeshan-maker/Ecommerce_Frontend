@@ -19,41 +19,46 @@ function Order() {
     },[])
 
   return (
-    <div className="container py-lg-4">
+    <div className="container py-lg-4 py-2">
       <div className="row">
-        <h5>My Orders</h5>
+        <h5 className="text-center">My Orders</h5>
       </div>
         {
           orderData.map((order)=>(
-            <div key={order.order_id} className="row mb-3 p-lg-2 order-item">
-                <div className="col-lg-6 col-md-6">
+            <div key={order.order_id} className="row mb-3 p-2 orders mx-2">
+                  <div className="row py-3">
+                    <div className="col-lg-6 col-md-6">
+                      <h6>#Order ID: {order.order_id}</h6>
+                    </div>
+                      <div className=" col-lg-6 col-md-6 text-lg-end">
+                        <button className="button">Track Order</button>
+                      </div>
+                  </div>
                   {
                     order?.OrderItems?.map((p,index)=>( 
-                   <div key={index} className="row">
-                    <div className="col-3">
-                       <img  src={p?.Product?.images[0]} alt=""
-                    className="img-fluid mb-3"  />
+                    <div key={index} className="row mb-3">
+                        <div className="col-lg-2">
+                       <img src={p?.Product?.images[0]} alt=""
+                      className="img-fluid rounded-2 order-image"  />
                     </div>
-                    <div className="col-9">
+                    <div className="col-lg-10 d-flex flex-column justify-content-center">
                       <p className="fw-bold">{p?.Product?.name}</p>
                       <p>
-                        <span>₹{p?.Product?.price} </span>
+                        <span className="fw-bold">₹{p?.Product?.price} </span>
                         <span> Quantity: {p?.quantity} </span>
                         <span> Size: {p?.size}</span>
                       </p>
-                      <p >Date: Wed Jul 10 2024</p>
-                      <p>Payment: {order?.Payment?.paymentMethod}</p>
+                      <p className="mb-0">Payment: {order?.Payment?.paymentMethod}</p>
                     </div>
-                   </div>
+                    </div>
                   ))
                   }
-                </div>
-                <div className="col-lg-3 col-md-3 d-flex align-items-center">
-                  <p>Out for Delivery</p>
-                </div>
-                <div className="col-lg-3 col-md-3 d-flex align-items-center">
-                  <p>Track Order</p>
-                </div>
+                  <div className="row">
+                    <div className="col-12 text-lg-end">
+                      <h6>Total Amount: ₹{order.totalAmount}</h6>
+                    </div>
+                  </div>
+
             </div>
           ))
         }

@@ -53,7 +53,7 @@ const PlaceOrder = () => {
             const res = await placeOrder(orderData);
             toast.success(res?.message);
             clearCart();
-            navigate("/order");
+            navigate("/orders");
           } catch (error) {
             toast.error(error?.response?.data?.error);
           }

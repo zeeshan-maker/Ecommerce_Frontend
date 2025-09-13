@@ -1,4 +1,10 @@
-.order-item{
-    background-color: var(  --light-pink-color);
+.orders{
+    border: 1px solid var(--light-gray-color);
+    border-radius: 10px;
+    text-align: center;
 
+}
+
+.order-image{
+    width: 130px;
 }
