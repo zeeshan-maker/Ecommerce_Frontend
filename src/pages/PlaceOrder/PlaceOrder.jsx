@@ -91,7 +91,7 @@ const PlaceOrder = () => {
       <form onSubmit={handlePlaceOrder}>
         <div className="row py-lg-4 py-2">
           {/* Shipping Address Form */}
-          <div className="col-lg-6 col-md-6">
+          <div className="col-lg-6 col-md-6 px-lg-5">
             <h4 className="mb-3">DELIVERY INFORMATION</h4>
             <div className="mb-2">
               <label htmlFor="address" className="form-label">
@@ -195,8 +195,8 @@ const PlaceOrder = () => {
           </div>
 
           {/* Order Summary Section */}
-          <div className="col-lg-6 col-md-6  px-lg-5">
-            <h4 className="mb-4">CART TOTALS</h4>
+          <div className="col-lg-6 col-md-6 px-lg-4">
+            <h4 className="my-4">CART TOTALS</h4>
             <div className="d-flex justify-content-between">
               <h6>Subtotal</h6>
               <h6>₹{subtotal}</h6>
@@ -212,20 +212,22 @@ const PlaceOrder = () => {
               <h6 className="fw-bold">₹{total}</h6>
             </div>
             <div className="mt-lg-5">
-              <h5 className="mb-lg-4">PAYMENT METHOD</h5>
+              <h5 className="mb-4">PAYMENT METHOD</h5>
               <div className="row">
-                <div className="col-3">
+
+                <div className="col-lg-3 col-6">
                   <div
-                    className={`payment-option py-3 px-4 ${
+                    className={`payment-option py-lg-3 px-lg-4 ${
                       method === "stripe" ? "active" : ""
                     }`}
                     onClick={() => setMethod("stripe")}
                   >
                     {method === "stripe" && <span className="green-dot"></span>}
-                    <img src={stripe} alt="strpe" className="img-fluid" />
+                    <img src={stripe} alt="strpe" className="img-fluid stripe-image" />
                   </div>
                 </div>
-                <div className="col-4">
+
+                <div className="col-lg-4 col-6">
                   <div
                     className={`payment-option py-3 px-4 ${
                       method === "razorpay" ? "active" : ""
@@ -239,7 +241,7 @@ const PlaceOrder = () => {
                   </div>
                 </div>
 
-                <div className="col-5">
+                <div className="col-lg-5 col-7">
                   <div
                     className={`payment-option ${
                       method === "cod" ? "active" : ""
@@ -252,12 +254,14 @@ const PlaceOrder = () => {
                 </div>
               </div>
             </div>
+
             <div className="text-end mt-3">
               <button type="submit" className="button2">
                 Place Order
               </button>
             </div>
           </div>
+
         </div>
       </form>
     </div>

@@ -29,7 +29,7 @@ function Cart() {
       ):
       <>
          <table className="table align-middle text-center">
-        <thead>
+        <thead >
           <tr>
             <th className="text-start">Product</th>
             <th className="d-none d-md-table-cell">Title</th>

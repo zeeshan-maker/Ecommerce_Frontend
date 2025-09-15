@@ -17,10 +17,11 @@ function Navbar() {
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [dropdown, setDropdown] = useState(false);
-
+   
     
     const handleLogout = () => {
     logout();
+    setDropdown(false)
     navigate("/login");
   };
 
@@ -31,8 +32,8 @@ function Navbar() {
        <div className="d-flex align-items-center logo">
          {
           token && user?.role ==="admin" ?
-          <img src={admin_logo} alt="logo" onClick={()=>navigate("/admin/dashboard")} />
-          :<img src={logo} alt="logo" onClick={()=>navigate("/")} />
+          <img src={admin_logo} alt="logo" onClick={()=>{setDropdown(false);navigate("/admin/dashboard")}} />
+          :<img src={logo} alt="logo" onClick={()=>{setDropdown(false); navigate("/")}} />
          }
        </div>
       
@@ -41,28 +42,28 @@ function Navbar() {
           <div className={`d-flex nav-item-container ${show ? "show" : ""}`}>
           <NavLink 
           to="/"
-          onClick={() => setShow(false)}
+          onClick={() => {setDropdown(false);setShow(false)}}
           className={({ isActive }) => `nav-link mx-3 ${isActive ? "active" : ""}`}
           >
             Shop
           </NavLink>
 
           <NavLink to="/men"
-           onClick={() => setShow(false)}
+           onClick={() =>{setDropdown(false); setShow(false)}}
            className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}`}
           >
             Men
           </NavLink>
 
           <NavLink to="/women"
-           onClick={() => setShow(false)}
+           onClick={() =>{setDropdown(false); setShow(false)}}
            className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}` }
           >
             Women
           </NavLink>
 
            <NavLink to="/kids"
-            onClick={() => setShow(false)}
+            onClick={() =>{setDropdown(false); setShow(false)}}
            className={({ isActive }) =>`nav-link mx-3 ${isActive ? "active" : ""}` }
           >
             Kids
@@ -95,15 +96,15 @@ function Navbar() {
          }
           {
             user?.role === "admin" ? "": <>
-            <span> <BsCart2 className="fs-3 cart" onClick={()=>navigate("/cart")} /></span>
+            <span> <BsCart2 className="fs-3 cart" onClick={()=>{setDropdown(false);navigate("/cart")}} /></span>
             <span className="counter">{cart.length}</span>
              </>
           }
 
            <div className="menu">
             {
-              show ?<img src={close} alt="close" onClick={()=>setShow(false)} />:
-               <img src={menu} alt="menu" onClick={()=>setShow(true)} />
+              show ?<img src={close} alt="close" onClick={()=>{setDropdown(false);setShow(false)}} />:
+               <img src={menu} alt="menu" onClick={()=>{setDropdown(false);setShow(true)}} />
             }
           
     

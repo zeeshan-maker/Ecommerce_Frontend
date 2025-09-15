@@ -1,10 +1,15 @@
 .orders{
     border: 1px solid var(--light-gray-color);
     border-radius: 10px;
-    text-align: center;
 
 }
 
 .order-image{
     width: 130px;
+}
+
+@media (max-width: 576px){
+    .order-image{
+    width: 100%
+}
 }
