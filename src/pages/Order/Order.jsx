@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { getUserOrder } from "../../services/orderService";
 import { toast } from "react-toastify";
 import "./Order.css";
+import { useNavigate } from "react-router-dom";
+
 function Order() {
   const [orderData, setOrderData] = useState([]);
+  const navigate = useNavigate();
 
   const loadOrderData = async () => {
     try {
@@ -31,7 +34,7 @@ function Order() {
                 <h6>#Order ID: {order.order_id}</h6>
               </div>
               <div className=" col-lg-6 col-md-6 text-lg-end">
-                <button className="button">Track Order</button>
+                <button className="button" onClick={()=>navigate(`/track-order/${order.order_id}`)}>Track Order</button>
               </div>
             </div>
           </div>

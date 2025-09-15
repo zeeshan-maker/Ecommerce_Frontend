@@ -27,6 +27,10 @@ export const updateOrder = async ()=>{
     
 }
 
+export const trackOrder = async (order_id) => {
+  const res = await api.get(`/order/track-order/${order_id}`);
+  return res.data;
+};
 
 
 export const getAllOrders = async ()=>{

@@ -14,6 +14,7 @@ import PlaceOrder from "../pages/PlaceOrder/PlaceOrder";
 import ProtectedRoute from "./ProtectedRoute";
 import Order from "../pages/Order/Order";
 import Verify from "../pages/Verify/Verify";
+import TrackOrder from "../pages/TrackOrder/TrackOrder";
 
 const AppRoutes = () => {
    return (
@@ -44,6 +45,15 @@ const AppRoutes = () => {
          </ProtectedRoute>
         } 
       />
+
+       <Route path="/track-order/:order_id" 
+      element={
+         <ProtectedRoute role="customer">
+          <TrackOrder/>
+         </ProtectedRoute>
+        } 
+      />
+
       <Route path="/verify" 
       element={
          <ProtectedRoute role="customer">
