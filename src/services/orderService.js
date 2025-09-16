@@ -23,7 +23,9 @@ export const placeOrderWithRazorpay = async (orderData)=>{
 }
 
 
-export const updateOrder = async ()=>{
+export const updateOrder = async (orderId, newStatus)=>{
+    const res = await api.put("/order/update-status",{orderId, newStatus})
+    return res.data;
     
 }
 

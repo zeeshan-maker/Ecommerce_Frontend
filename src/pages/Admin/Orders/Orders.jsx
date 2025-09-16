@@ -3,21 +3,14 @@ import "./Orders.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { updateOrder } from "../../../services/orderService";
-
+import order_image from "../../../assets/Admin_Assets/order.png"
 export default function Orders() {
   const [orders, setOrders] = useState([]);
-  const statusOptions = [
-    "PENDING",
-    "CONFIRMED",
-    "SHIPPED",
-    "DELIVERED",
-    "CANCELLED",
-  ];
+  const statusOptions = ["pending", "processing", "shipped", "delivered", "cancelled"];
 
   const fetchAllOrder = async () => {
     try {
       const res = await getAllOrders();
-      console.log("#######33",res?.orders)
       setOrders(res?.orders);
     } catch (error) {
       toast.error(error.response?.data?.error || "Failed to fetch orders");
@@ -30,7 +23,7 @@ export default function Orders() {
       toast.success(res.message);
       fetchAllOrder();
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to update status");
+      toast.error(err.response?.data?.error || "Failed to update status");
     }
   };
 
@@ -39,61 +32,45 @@ export default function Orders() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container py-lg-4">
       <h4>All Orders</h4>
-      <table className="orders-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Order ID</th>
-            <th>User ID</th>
-            <th>Status</th>
-            <th>Amount</th>
-            <th>Payment</th>
-            <th>Created At</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.length > 0 ? (
-            orders.map((order, index) => (
-              <tr key={order.order_id}>
-                <td>{index + 1}</td>
-                <td>{order.order_id}</td>
-                <td>{order.user_id}</td>
-                <td>
-                  <select
-                    value={order.status}
-                    onChange={(e) =>
-                      handleStatusChange(order.order_id, e.target.value)
-                    }
-                    className="status-dropdown"
-                  >
-                    {statusOptions.map((status) => (
-                      <option key={status} value={status}>
-                        {status}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-                <td>₹{order.totalAmount}</td>
-                <td>
-                  <span className={`status ${order.orderStatus.toLowerCase()}`}>
-                    {order?.Payment?.paymentStatus}
-                  </span>
-                  
-                </td>
-                <td>{new Date(order.createdAt).toLocaleString()}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="7" className="empty">
-                No orders found.
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      {orders.map((order) => (
+        <div key={order.order_id} className="row mb-3 p-2 orders mx-2 d-flex align-items-center">
+          <div className="col-lg-2">
+            <img src={order_image} alt="" className="img-fluid" />
+          </div>
+          <div className="col-lg-4">
+            {
+              order?.OrderItems.map((product)=>(
+               <div key={product.orderItem_id}>
+                {product?.Product.name +" "+ product.size}
+                </div>
+              ))
+            }
+          </div>
+          <div className="col-lg-3">
+           <div> <strong>Items: {order?.OrderItems.length}</strong></div>
+           <div>Payment Method: {order?.Payment.paymentMethod}</div>
+           <div>Payment Status: {order?.Payment.paymentStatus}</div>
+            </div>
+          <div className="col-lg-1">₹ {order.totalAmount}</div>
+          <div className="col-lg-2">
+            <select
+              value={order.status}
+              onChange={(e) =>
+                handleStatusChange(order.order_id, e.target.value)
+              }
+              className="status-dropdown"
+            >
+              {statusOptions.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useCartSelector , useAuthSelector } from "../../redux/useSelectors";
 import { useDispatcher } from "../../redux/useDispatcher";
 
+
 function Navbar() {
     const { cart } = useCartSelector();
     const { token, user } = useAuthSelector();
@@ -25,6 +26,7 @@ function Navbar() {
     navigate("/login");
   };
 
+ 
 
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
@@ -84,10 +86,10 @@ function Navbar() {
            {/* Dropdown */}
               {dropdown && (
                 <div className="profile-dropdown shadow-sm">
-                  <p onClick={() => { setDropdown(false); navigate("/orders"); }}>
+                  <p className="dropdow-link" onClick={() => { setDropdown(false); navigate("/orders"); }}>
                     My Orders
                   </p>
-                  <p onClick={handleLogout}>Logout</p>
+                  <p className="dropdow-link" onClick={handleLogout}>Logout</p>
                 </div>
               )}
             </div>
