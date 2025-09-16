@@ -1,4 +1,5 @@
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate} from "react-router-dom";
+import { useEffect } from "react";
 import Home from "../pages/Home/Home";
 import ProductDetails from "../pages/ProductDetailsPage/ProductDetaisPage"
 import Men from "../pages/Men/Men";
@@ -17,6 +18,16 @@ import Verify from "../pages/Verify/Verify";
 import TrackOrder from "../pages/TrackOrder/TrackOrder";
 
 const AppRoutes = () => {
+   const navigate = useNavigate();
+  const location = useLocation();
+    useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (token && user.role === "admin" && location.pathname === "/") {
+      navigate("/admin/dashboard");
+    }
+  }, [navigate, location]);
+
    return (
     <Routes>
        {/* Public Routes */}

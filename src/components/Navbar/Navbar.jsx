@@ -86,9 +86,12 @@ function Navbar() {
            {/* Dropdown */}
               {dropdown && (
                 <div className="profile-dropdown shadow-sm">
-                  <p className="dropdow-link" onClick={() => { setDropdown(false); navigate("/orders"); }}>
+                  {
+                    token && user?.role ==="admin"?"":(<p className="dropdow-link" onClick={() => { setDropdown(false); navigate("/orders"); }}>
                     My Orders
-                  </p>
+                  </p>)
+                  }
+                  
                   <p className="dropdow-link" onClick={handleLogout}>Logout</p>
                 </div>
               )}

@@ -56,7 +56,7 @@ export default function Orders() {
           <div className="col-lg-1">₹ {order.totalAmount}</div>
           <div className="col-lg-2">
             <select
-              value={order.status}
+              value={order.orderStatus}
               onChange={(e) =>
                 handleStatusChange(order.order_id, e.target.value)
               }
