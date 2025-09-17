@@ -34,7 +34,7 @@ code {
 
 
 .main-button {
-  background-color: var(--red-color);
+  background-color: var(--orange-color);
   color: var(--white-color);
   padding: 0.6rem 1.2rem;
   border: none;

@@ -34,7 +34,7 @@ function Navbar() {
        <div className="d-flex align-items-center logo">
          {
           token && user?.role ==="admin" ?
-          <img src={admin_logo} alt="logo" onClick={()=>{setDropdown(false);navigate("/admin/dashboard")}} />
+          <img src={admin_logo} alt="logo" className="admin-logo" onClick={()=>{setDropdown(false);navigate("/admin/dashboard")}} />
           :<img src={logo} alt="logo" onClick={()=>{setDropdown(false); navigate("/")}} />
          }
        </div>
@@ -105,15 +105,16 @@ function Navbar() {
             <span className="counter">{cart.length}</span>
              </>
           }
-
-           <div className="menu">
+            {
+              user?.role === "admin" ? "":
+               <div className="menu">
             {
               show ?<img src={close} alt="close" onClick={()=>{setDropdown(false);setShow(false)}} />:
                <img src={menu} alt="menu" onClick={()=>{setDropdown(false);setShow(true)}} />
             }
-          
-    
            </div>
+            }
+          
             
         </div>
       </div>

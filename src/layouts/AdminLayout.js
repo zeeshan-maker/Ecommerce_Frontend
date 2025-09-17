@@ -1,12 +1,11 @@
 // src/layouts/AdminLayout.js
 import Sidebar from "../components/Sidebar/Sidebar"
-import './AdminLayout.css';
 
 const AdminLayout = ({ children }) => {
   return (
-    <div className="admin-layout">
+    <div className="d-flex">
       <Sidebar />
-      <div className="admin-content">
+      <div className="w-100">
         {children}
       </div>
     </div>
