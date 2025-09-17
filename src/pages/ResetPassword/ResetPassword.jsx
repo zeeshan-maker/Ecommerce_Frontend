@@ -3,7 +3,7 @@ import { useState } from "react";
 import { resetPassword } from "../../services/authService";
 import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function ResetPassword() {
   const { token } = useParams();
@@ -11,6 +11,8 @@ function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigation = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
  
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -61,29 +63,42 @@ function ResetPassword() {
           </p>
            {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label ">Password</label>
+            <div className="input-group mb-3">
+              {/* <label htmlFor="password" className="form-label ">Password</label> */}
               <input
-              type="password"
+               type={showPassword ? "text" : "password"}
               id="password"
               className="form-control"
                value={password}
+               placeholder="Enter New Password"
                 onChange={(e) => setPassword(e.target.value)}
               required
             />
-      
+           <span
+                  className="input-group-text eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
             </div>
-             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label ">Confirm Password</label>
+
+             <div className="input-group mb-3">
+              {/* <label htmlFor="confirmPassword" className="form-label ">Confirm Password</label> */}
               <input
-              type="password"
+               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
               className="form-control"
               value={confirmPassword}
+              placeholder="Confirm New Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-    
+               <span
+                  className="input-group-text eye"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
             </div>
             <button className="button my-3 w-100">Reset Password</button>
                   

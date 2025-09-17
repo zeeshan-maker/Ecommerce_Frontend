@@ -5,7 +5,7 @@ import { useState } from "react";
 import { loginUser } from "../../services/authService"
 import { toast } from "react-toastify";
 import { useDispatcher } from "../../redux/useDispatcher";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
     email:"",
     password:""
   })
-
+const [showPassword, setShowPassword] = useState(false);
   const handleChange =(e)=>{
     const {name,value} = e.target;
     setFormData({
@@ -51,15 +51,23 @@ function Login() {
                 placeholder="Enter your email"
                 required
               />
+              <div className="input-group mb-3 ">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="form-control mb-3"
+                className="form-control"
                 placeholder="Enter your password"
                 required
               />
+                <span
+                  className="input-group-text eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash  /> : <FaEye />}
+                </span>
+              </div>
               <p className="text-end text-primary">
                 <Link to="/forgot-password">Forget Password?</Link>
                 </p>

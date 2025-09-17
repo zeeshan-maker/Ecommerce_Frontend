@@ -22,5 +22,8 @@
     color: var(--white-color);
 }
 
+.eye{
+    cursor: pointer;
+}
 
 

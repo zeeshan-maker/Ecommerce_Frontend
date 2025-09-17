@@ -1,18 +1,20 @@
-import user from "../../assets/Frontend_Assets/person.png"
+import user from "../../assets/Frontend_Assets/person.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { registerUser } from "../../services/authService";
 import { toast } from "react-toastify";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Registration() {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone:"",
+    phone: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,33 +24,33 @@ function Registration() {
     });
   };
 
-   // 🔹 Handle form submit
+  // 🔹 Handle form submit
   const handleForm = async (e) => {
     try {
       e.preventDefault();
-      const res = await registerUser(formData)
-      toast.success(res.message)
+      const res = await registerUser(formData);
+      toast.success(res.message);
       setFormData({
         name: "",
-      email: "",
-      phone:"",
-      password: "",
-      })
-      navigate("/login")
+        email: "",
+        phone: "",
+        password: "",
+      });
+      navigate("/login");
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-
-
   };
 
   return (
     <div className="container">
-        <div className="row py-4 d-flex justify-content-center">
-          <div className="col-lg-4 col-md-6 col-sm-8 col-12">
-           <div className="login-card p-lg-4 p-2">
-            <div className="text-center mb-2"><img src={user} alt="" className="img-fluid" /></div>
-             <h3 className="text-center mb-3 login-heading">Create Account</h3>
+      <div className="row py-4 d-flex justify-content-center">
+        <div className="col-lg-4 col-md-6 col-sm-8 col-12">
+          <div className="login-card p-lg-4 p-2">
+            <div className="text-center mb-2">
+              <img src={user} alt="" className="img-fluid" />
+            </div>
+            <h3 className="text-center mb-3 login-heading">Create Account</h3>
             <form onSubmit={handleForm}>
               <input
                 type="text"
@@ -75,25 +77,38 @@ function Registration() {
                 className="form-control mb-3"
                 placeholder="Enter your phone number"
               />
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="form-control mb-3"
-                placeholder="Enter your password"
-              />
-      
-              <button type="submit" className="btn btn-login w-100">Sign Up</button>
-            </form> 
-            <p className="mt-4 text-center">Already have an account ?  
-                <Link className="text-primary" to="/login"> Login</Link>
-                </p>
-           </div>
+              <div className="input-group mb-3 ">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="form-control"
+                  placeholder="Enter your password"
+                />
+                <span
+                  className="input-group-text eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              <button type="submit" className="btn btn-login w-100">
+                Sign Up
+              </button>
+            </form>
+            <p className="mt-4 text-center">
+              Already have an account ?
+              <Link className="text-primary" to="/login">
+                {" "}
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-  )
+    </div>
+  );
 }
 
-export default Registration
+export default Registration;
