@@ -54,7 +54,7 @@ function ProductDetaisPage() {
         </div>
         <div className="col-lg-6">
           <h4 className="mb-3 mt-3 fw-bold text-secondary">{product.name}</h4>
-          <h6 className="mb-3 fs-2 text-secondary">${product.price}</h6>
+          <h6 className="mb-3 fs-2 text-secondary">₹{product.price}</h6>
           <h6 className="text-danger fw-bold">Description</h6>
           <p className="text-secondary">{product.description}</p>
           <h6 className="mb-lg-4">Select Size</h6>
