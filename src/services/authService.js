@@ -10,6 +10,12 @@ export const loginUser = async (credentials) => {
   return res?.data;
 };
 
+
+export const verifyUsers = async (token) => {
+  const res = await api.post(`/auth/verify-user/${token}`);
+  return res?.data;
+};
+
 export const forgotPassword = async (email) => {
   const res = await api.post("/auth/forgot-password", { email: email });
   return res.data;

@@ -16,6 +16,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Order from "../pages/Order/Order";
 import Verify from "../pages/Verify/Verify";
 import TrackOrder from "../pages/TrackOrder/TrackOrder";
+import VerifyUser from "../pages/VerifyUser/VerifyUser";
 
 const AppRoutes = () => {
    const navigate = useNavigate();
@@ -37,6 +38,7 @@ const AppRoutes = () => {
       <Route path="/kids" element={<Kids />} />
       <Route path="/product/:product_id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/verify-user" element={<VerifyUser />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
       <Route path="/registration" element={<Registration />} />

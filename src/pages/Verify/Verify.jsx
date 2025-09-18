@@ -3,8 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { verifyStripe } from '../../services/orderService';
 import { useDispatcher } from '../../redux/useDispatcher';
 import { toast } from 'react-toastify';
-import success_icon from "../../assets/Frontend_Assets/success.png";
-import "./Verify.css";
+import VerifyPayment  from '../../components/Verify/Verify';
 
 export default function Verify() {
     const navigate = useNavigate();
@@ -20,7 +19,7 @@ export default function Verify() {
                     clearCart();
                      setTimeout(() => {
                     navigate("/orders");
-                }, 10000);
+                }, 5000);
                 }else{
                    navigate("/cart") 
                 }
@@ -34,13 +33,6 @@ export default function Verify() {
     })
 
   return (
-    <div className="d-flex align-items-center justify-content-center verify">
-      <div className='d-flex flex-column align-items-center'>
-          <div className='img-container'>
-            <img src={success_icon} alt="" className='img-fluid w-75' />
-          </div>
-        <h3 className='text-center'>Payment successful.</h3>
-      </div>
-    </div>
+    <VerifyPayment text="Payment successful."/>
   )
 }
