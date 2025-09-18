@@ -1,4 +1,4 @@
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer/Footer";
@@ -7,13 +7,13 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-  <HashRouter>
+  <BrowserRouter>
     <ScrollToTop/>
     <Navbar/>
     <AppRoutes/>
     <Footer/>
     <ToastContainer />
-  </HashRouter>
+  </BrowserRouter>
   );
 }
 
