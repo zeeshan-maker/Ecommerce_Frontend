@@ -11,6 +11,7 @@ function Cart() {
   const navgation = useNavigate();
   const { cart } = useCartSelector();
   const { removeItem } = useDispatcher();
+  
 
     // 🔹 Calculate totals
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
