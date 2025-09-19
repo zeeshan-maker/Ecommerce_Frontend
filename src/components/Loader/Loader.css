@@ -1,0 +1,10 @@
+.loader-container {
+  height: 60vh; /* full center in screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner{
+  color: var(--orange-color);
+}

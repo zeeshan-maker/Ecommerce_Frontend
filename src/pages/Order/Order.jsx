@@ -3,9 +3,12 @@ import { getUserOrder } from "../../services/orderService";
 import { toast } from "react-toastify";
 import "./Order.css";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 function Order() {
   const [orderData, setOrderData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
   const loadOrderData = async () => {
@@ -15,11 +18,16 @@ function Order() {
     } catch (error) {
       toast.error(error?.response?.data?.error);
     }
+    finally {
+        setLoading(false);
+      }
   };
 
   useEffect(() => {
     loadOrderData();
   }, []);
+
+  if (loading) return <Loader />;
 
   return (
     <div className="container py-lg-4 py-2">

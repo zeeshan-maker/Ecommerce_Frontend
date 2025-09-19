@@ -4,19 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatcher } from "../../redux/useDispatcher"
 import { toast } from 'react-toastify';
 import {getProductById} from "../../services/productService"
+import Loader from "../../components/Loader/Loader";
 
-
-   // Skeleton Loader
-// Loader Component
-function Loader() {
-  return (
-    <div className="d-flex justify-content-center align-items-center loader-container">
-      <div className="spinner-border spinner" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    </div>
-  );
-}
 
 function ProductDetaisPage() {
    const { addItem } = useDispatcher();
