@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 function Home() {
   const [products, setProducts] = useState([])
-
+  const [loading, setLoading] = useState(true);
         const fetchAllProduct = async ()=>{
             try {
               const res= await getAllProduct();
@@ -16,6 +16,9 @@ function Home() {
             } catch (error) {
               toast.error(error?.response?.data.message)
             }
+            finally {
+        setLoading(false);
+      }
           }
 
       useEffect(()=>{
@@ -25,9 +28,9 @@ function Home() {
   return (
     <>
       <Hero />
-      <Popular products={products}/> 
+      <Popular products={products} loading={loading}/> 
       <Offers/>
-      <NewCollections products={products}/>
+      <NewCollections products={products} loading={loading}/>
     </>
   );
 }

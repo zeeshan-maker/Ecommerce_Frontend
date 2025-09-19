@@ -5,10 +5,11 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 0;
+    color: var(--gray-color);
 }
 
 .hero-new-collection{
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 700;
 }
 
@@ -24,6 +25,7 @@
     .new-arrivles{
     font-size: 14px;
     font-weight: 600;
+    margin-top: 10px;
 }
 
 .hero-new-collection{

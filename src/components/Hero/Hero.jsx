@@ -1,19 +1,17 @@
-import hero_image from "../../assets/Frontend_Assets/hero_image.png"
+import hero_image from "../../assets/Frontend_Assets/Hero_image1.png"
 import arrow from "../../assets/Frontend_Assets/arrow.png"
-import hand from "../../assets/Frontend_Assets/hand_icon.png"
 import "./Hero.css"
 function Hero() {
   return (
     <div className="container-fluid bg-color">
-        <div className="container">
+        <div className="container py-lg-5">
         <div className="row">
            <div className="col-lg-6 d-flex align-items-center justify-content-center order-2 order-sm-1">
-             <div>
+             <div className="w-100">
               <p className="new-arrivles">NEW ARRIVLES ONLY</p>
               <h1 className="hero-new-collection">
-                new <img src={hand} className="hand-img" alt="" /> <br/>
-                collections <br/>
-                for everyone
+                Gold Earrings For <br/>
+               Women
               </h1>
              
             <button className="main-button mt-3">

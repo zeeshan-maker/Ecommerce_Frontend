@@ -5,6 +5,19 @@ import { useDispatcher } from "../../redux/useDispatcher"
 import { toast } from 'react-toastify';
 import {getProductById} from "../../services/productService"
 
+
+   // Skeleton Loader
+// Loader Component
+function Loader() {
+  return (
+    <div className="d-flex justify-content-center align-items-center loader-container">
+      <div className="spinner-border spinner" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
+}
+
 function ProductDetaisPage() {
    const { addItem } = useDispatcher();
   const { product_id } = useParams();
@@ -12,11 +25,14 @@ function ProductDetaisPage() {
   const [sizes, setSizes] =useState(null)
    const [selectedSize, setSelectedSize] = useState("S");
    const [mainImage, setMainImage] = useState(null);
+   const [loading, setLoading] = useState(true);
 
   
    useEffect(()=>{
     const fetchSingleProduct = async ()=>{
+      
       try {
+         setLoading(true);
         const res = await getProductById(product_id)
         setProduct(res.product)
         setSizes(JSON.parse(res?.product?.sizes))
@@ -24,11 +40,16 @@ function ProductDetaisPage() {
       } catch (error) {
         toast.error(error?.response?.data.message)
       }
+      finally {
+        setLoading(false);
+      }
     }
 
     fetchSingleProduct();
     
    },[product_id])
+
+    if (loading) return <Loader />;
 
   return (
     <div className="container py-4">
