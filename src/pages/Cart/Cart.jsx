@@ -36,7 +36,7 @@ function Cart() {
             <th className="d-none d-md-table-cell">Title</th>
             <th>Size</th>
             <th>Price</th>
-            <th>Quantity</th>
+            <th>Qty</th>
             <th>Total</th>
             <th className="text-end">Remove</th>
           </tr>
@@ -50,7 +50,7 @@ function Cart() {
             </td>
             <td className="d-none d-md-table-cell">{product.name}</td>
             <td>{product.size}</td>
-            <td>₹{product.price}</td>
+            <td>₹{Math.floor(product.price)}</td>
             <td>{product.quantity}</td>
             <td>₹{product.price * product.quantity}</td>
             <td className="text-end">

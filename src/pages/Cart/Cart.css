@@ -8,3 +8,9 @@
   color: var(--orange-color);
   font-size: 24px;
 }
+
+@media (max-width: 576px){
+  .cart-product-image{
+    width: 30px;
+  }
+}
