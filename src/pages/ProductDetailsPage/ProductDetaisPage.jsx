@@ -43,7 +43,7 @@ function ProductDetaisPage() {
   return (
     <div className="container py-4">
        <div className="row">
-        <div className="col-lg-6 ">
+        <div className="col-lg-6">
           <div className="row">
             <div className="col-lg-2 order-2 order-sm-1  image-column">
               {

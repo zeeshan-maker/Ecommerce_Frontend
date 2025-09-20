@@ -16,7 +16,7 @@ function Card({product_id,image,name,price,old_price}) {
             <img src={star} alt="" />
             <img src={star_dull} alt="" />
             <img src={star_dull} alt="" />
-           <p className="mb-0 prduct-name">{name}</p>
+           <p className="mb-0 prduct-name">{name.length > 25 ? name.substring(0, 25) + "..." : name}</p>
            <p>
             <span className="price">₹{price}</span>
             <span className="old-price">₹{old_price}</span>

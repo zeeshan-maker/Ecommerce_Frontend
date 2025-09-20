@@ -72,6 +72,7 @@ const AddProduct = () => {
     setDescription("");
     setCategory("");
     setPrice("");
+    setOldPrice("");
     setStock("");
     setSelectedSizes([]);
     setFiles([null, null, null, null]);
