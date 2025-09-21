@@ -20,7 +20,7 @@ function Cart() {
  
 
   return (
-    <div className="container py-lg-4 py-2">
+    <div className="container py-lg-4 py-2 gx-0">
      {
       cart.length === 0 ? (
          <div className="text-center">
@@ -30,7 +30,7 @@ function Cart() {
       ):
       <>
          <table className="table align-middle text-center">
-        <thead >
+        <thead  className="">
           <tr>
             <th className="text-start">Product</th>
             <th className="d-none d-md-table-cell">Title</th>
@@ -53,7 +53,7 @@ function Cart() {
             <td>₹{Math.floor(product.price)}</td>
             <td>{product.quantity}</td>
             <td>₹{product.price * product.quantity}</td>
-            <td className="text-end">
+            <td className="text-lg-end">
               <FaTrash
                 className="delete-item"
                 onClick={()=>{

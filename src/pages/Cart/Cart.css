@@ -13,4 +13,7 @@
   .cart-product-image{
     width: 30px;
   }
+  .delete-item {
+  font-size: 20px;
+}
 }
