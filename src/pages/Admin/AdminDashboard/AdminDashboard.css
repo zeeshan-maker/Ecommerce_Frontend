@@ -1,6 +1,6 @@
 .product-list-container {
   padding: 20px;
-  height: 80vh;
+  height: 85vh;
   overflow-y: hidden;
 }
 
@@ -21,7 +21,7 @@
   display: grid;
   grid-template-columns: 80px 1fr 1fr 1fr 100px;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--white-color);
   padding: 10px;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -40,21 +40,10 @@
   border-radius: 4px;
 }
 
-.remove-btn {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-.remove-btn:hover {
-  background-color: #c0392b;
-}
 
 .list{
-  height: 70vh;
+  height: 80vh;
   overflow: scroll;
 }
 

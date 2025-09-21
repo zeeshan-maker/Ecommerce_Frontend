@@ -2,9 +2,10 @@ import "./AdminDashboard.css";
 import { useState, useEffect } from "react";
 import { getAllProduct, deleteProduct } from "../../../services/productService";
 import { toast } from "react-toastify";
-
+import Loader from "../../../components/Loader/Loader"
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading]= useState(true)
 
   const fetchAllProduct = async () => {
       try {
@@ -12,6 +13,9 @@ const AdminDashboard = () => {
         setProducts(res?.products);
       } catch (error) {
         toast.error(error?.response?.data?.message);
+      }
+      finally{
+        setLoading(false)
       }
     };
 
@@ -23,16 +27,22 @@ const AdminDashboard = () => {
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
+    finally{
+      setLoading(false)
+    }
   };
   useEffect(() => {
     fetchAllProduct();
   }, []);
 
+  if(loading) return <Loader/> ;
+  
   if (products.length === 0) {
     return <h1 className="product-heading">Data Not Found</h1>;
   }
 
   return (
+    
     <div className="product-list-container">
       <h4 className="product-heading">All Products List</h4>
       <div className="product-table">
@@ -53,7 +63,7 @@ const AdminDashboard = () => {
               <div>₹{product.price}</div>
               <div>{product?.Category?.name}</div>
               <div>
-                <button className="remove-btn" onClick={() => deleteItem(product?.product_id)}>
+                <button className="button" onClick={() => deleteItem(product?.product_id)}>
                   Remove
                 </button>
               </div>

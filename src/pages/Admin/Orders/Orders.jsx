@@ -3,8 +3,11 @@ import "./Orders.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { updateOrder } from "../../../services/orderService";
-import order_image from "../../../assets/Admin_Assets/order.png"
+import order_image from "../../../assets/Admin_Assets/order.png";
+import Loader from "../../../components/Loader/Loader";
+
 export default function Orders() {
+  const [ loading, setLoading]= useState(true)
   const [orders, setOrders] = useState([]);
   const statusOptions = ["pending", "processing", "shipped", "delivered", "cancelled"];
 
@@ -14,6 +17,9 @@ export default function Orders() {
       setOrders(res?.orders);
     } catch (error) {
       toast.error(error.response?.data?.error || "Failed to fetch orders");
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -31,8 +37,10 @@ export default function Orders() {
     fetchAllOrder();
   }, []);
 
+  if(loading) return <Loader/>
+
   return (
-    <div className="container py-lg-4">
+    <div className="container py-lg-4 order-container">
       <h4>All Orders</h4>
       {orders.map((order) => (
         <div key={order.order_id} className="row mb-3 p-2 orders mx-2 d-flex align-items-center">

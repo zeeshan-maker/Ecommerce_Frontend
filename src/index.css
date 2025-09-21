@@ -84,3 +84,16 @@ code {
   border: none;
   transition: all 0.3s ease;
 }
+
+
+/* For Chrome, Edge, Safari */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange-color) var(--secondary-gray-color); 
+}
+
+/* Webkit browsers */
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
