@@ -20,7 +20,7 @@
    top: 0;
    width: 100%;
    height: 100%;
-   background-color:var(--orange-color);
+   background: linear-gradient(var(--pink-color), var(--orange-color));
    z-index: -1;
    border-radius: 50%;
    filter: blur(90px);
